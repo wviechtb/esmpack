@@ -1,0 +1,7 @@
+exportPattern("^[^\\.]")
+
+import(methods)
+import(stats)
+importFrom("utils", "data")
+
+#S3method(<method>, <class>)
