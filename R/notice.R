@@ -3,9 +3,9 @@
 # Construct day numbers from notification numbers.
 get.day.number <- function(notification.number, beeps.per.day = 10, total.notifications = 50) {
     # Reality check.
-    if(total.notifications %% beeps.per.day > 0) stop("The beeps are expected to be uniformly distributed across all days.")
+    if(total.notifications %% beeps.per.day > 0) stop("Same number of beeps expected across all days.")
 
-    # How many days of measurement?
+    # How many days did we measure?
     total.days <- total.notifications / beeps.per.day
 
     # Day.
@@ -34,7 +34,7 @@ get.day.number <- function(notification.number, beeps.per.day = 10, total.notifi
 # Construct beep numbers from notification numbers.
 get.beep.number <- function(notification.number, beeps.per.day = 10, total.notifications = 50) {
     # Prevent notification overflow.
-    if(notification.number > total.notifications) stop("Notification number cannot exceed maximum number of notifications.")
+    if(notification.number > total.notifications) stop("`notification.number` cannot exceed maximum number of notifications.")
 
     # Mod.
     mod <- notification.number %% beeps.per.day
