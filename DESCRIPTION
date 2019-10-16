@@ -1,6 +1,6 @@
 Package: esmpack
 Version: 0.1-0
-Date: 2019-10-16
+Date: 2019-10-17
 Title: Functions that Facilitate Preparation and Management of ESM/EMA Data
 Authors@R: c(person("Wolfgang", "Viechtbauer", email = "wvb@wvbauer.com", role = c("aut","cre")))
 Depends: R (>= 3.6.0)

@@ -11,7 +11,7 @@ lagvar(x, obs, id, day, data, lag=1)
    \item{id}{optional vector to specify a subject id variable.}
    \item{day}{optional vector to specify a day number variable.}
    \item{data}{optional data frame that contains the variables specified above.}
-   \item{lag}{scalar specifying the lag (default is \code{1}).}
+   \item{lag}{scalar specifying the lag (default is \code{1}). Can also be a vector with multiple lag values that are permitted. See \sQuote{Details}.}
 }
 \details{
    The function can be used to create a lagged version of the variable specified via the \code{x} argument. The \code{obs} argument is used to specify a variable that indicates the observation number of the values specified via the \code{x} argument. There should not be repeated values of \code{obs} (within the same subject, in case the dataset includes multiple subjects).
@@ -19,9 +19,15 @@ lagvar(x, obs, id, day, data, lag=1)
    The (optional) \code{id} argument is used to specify a subject id variable. If not specified, all observations are assumed to come from the same subject.
 
    The (optional) \code{day} variable is used to specify a day number variable. If not specified, then values of the variable to be lagged are allowed to be lagged across days (in case there are multiple observation days). If the \code{day} variable is specified, then lagged values across different days are not allowed (i.e., are set to missing).
+
+   The \code{lag} argument is used to specify the number of lags (i.e., the lagged value of the variable at a particular observation number \eqn{t} is the value of the variable observed at observation number \eqn{t - lag}). If no lagged value is available at observation number \eqn{t - lag} (either because the dataset does not include that observation number or the value at that observation number is missing), then the lagged value will be missing.
+
+   One can also specify multiple values for the \code{lag} argument (usually a consecutive range, such as \code{1:3}). In that case, the function will find the lagged value with the smallest lag and also indicate the lag of each lagged value. See \sQuote{Examples}.
 }
 \value{
-   The function returns a vector with the lagged values (that will typically be added back to the data frame as a new variable).
+   If \code{lag} is a single number, the function returns a vector with the lagged values (that will typically be added back to the data frame as a new variable).
+
+   If multiple values are specified for \code{lag}, the function returns a data frame with elements \code{xl} for the lagged values and \code{lag} for the lag of those values.
 }
 \author{
    Wolfgang Viechtbauer \email{wvb@wvbauer.com} \cr
@@ -44,22 +50,27 @@ subject dayno beep stress
 2 1 2  3
 2 1 3  2
 2 2 6  1
-2 2 7  4
-2 2 8  5
+2 2 9  5
 2 2 10 2")
 dat
 
 # lag the stress variable
-dat$stress_lag <- lagvar(stress, subject, beep, data=dat)
+dat$stress_lag <- lagvar(stress, beep, subject, data=dat)
 dat
 
 # but this also allows lagged values across days
 # this can be avoided by specifying the day variable
-dat$stress_lag <- lagvar(stress, subject, beep, dayno, data=dat)
+dat$stress_lag <- lagvar(stress, beep, subject, dayno, data=dat)
 dat
 
 # lag the stress variable by two observations
-dat$stress_lag2 <- lagvar(stress, subject, beep, dayno, data=dat, lag=2)
+dat$stress_lag <- lagvar(stress, beep, subject, dayno, data=dat, lag=2)
+dat
+
+# lag the stress variable by up to 5 observations
+# note: this creates two variables (xl and lag), which are both added to the dataset
+dat$stress_lag <- lagvar(stress, beep, subject, dayno, data=dat, lag=1:5)$xl
+dat$lags <- lagvar(stress, beep, subject, dayno, data=dat, lag=1:5)$lag
 dat
 
 # illustrative dataset as above, but with missing beeps included
@@ -81,14 +92,19 @@ subject dayno beep stress
 2 1 4  NA
 2 1 5  NA
 2 2 6  1
-2 2 7  4
-2 2 8  5
-2 2 9  NA
+2 2 7  NA
+2 2 8  NA
+2 2 9  5
 2 2 10 2")
 dat
 
 # lag the stress variable
-dat$stress_lag <- lagvar(stress, subject, beep, dayno, data=dat)
+dat$stress_lag <- lagvar(stress, beep, subject, dayno, data=dat)
+dat
+
+# lag the stress variable by up to 5 observations
+dat$stress_lag <- lagvar(stress, beep, subject, dayno, data=dat, lag=1:5)$xl
+dat$lags <- lagvar(stress, beep, subject, dayno, data=dat, lag=1:5)$lag
 dat
 }
 \keyword{manip}

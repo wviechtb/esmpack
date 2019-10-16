@@ -17,12 +17,12 @@ lagvar <- function(x, obs, id, day, data, lag=1) {
    # get x, id, obs, and day arguments (will be NULL when unspecified)
 
    mf.x   <- mf[[match("x",   names(mf))]]
-   mf.id  <- mf[[match("id",  names(mf))]]
    mf.obs <- mf[[match("obs", names(mf))]]
+   mf.id  <- mf[[match("id",  names(mf))]]
    mf.day <- mf[[match("day", names(mf))]]
    x      <- eval(mf.x,   data, enclos=sys.frame(sys.parent()))
-   id     <- eval(mf.id,  data, enclos=sys.frame(sys.parent()))
    obs    <- eval(mf.obs, data, enclos=sys.frame(sys.parent()))
+   id     <- eval(mf.id,  data, enclos=sys.frame(sys.parent()))
    day    <- eval(mf.day, data, enclos=sys.frame(sys.parent()))
 
    # if day variable is missing, set it to 1 for all observations
@@ -73,53 +73,66 @@ lagvar <- function(x, obs, id, day, data, lag=1) {
 
    # checks on 'lag' argument
 
-   if (length(lag) != 1L)
-      stop("Argument 'lag' must be of length 1.")
-
    if (!is.numeric(lag))
-      stop("Argument 'lag' must be a number.")
+      stop("Argument 'lag' must be numeric.")
 
-   lag <- as.integer(lag)
+   lag <- sort(unique(as.integer(lag)))
 
-   if (lag < 1L)
+   if (any(lag < 1L))
       stop("Argument 'lag' must be >= 1.")
+
+   # number of lag values specified
+
+   m <- length(lag)
 
    #########################################################################
 
    dat <- data.frame(x=x, id=id, day=day, obs=obs)
 
-   xl <- lapply(split(dat, dat$id), function(sub) {
+   res <- lapply(split(dat, dat$id), function(sub) {
 
       n <- nrow(sub)
       xl <- rep(NA, n)
+      ll <- rep(NA, n)
 
       for (i in 1:n) {
 
-         if (sub$obs[i] - lag <= 0)
-            next
+         for (j in 1:m) {
 
-         pos <- which(sub$obs == sub$obs[i]-lag)
+            if (sub$obs[i] - lag[j] <= 0)
+               break
 
-         if (any(pos)) {
+            pos <- which(sub$obs == sub$obs[i]-lag[j])
 
-            if (sub$day[i] != sub$day[pos]) {
-               next
-            } else {
-               xl[i] <- sub$x[pos]
+            if (length(pos) > 0 && !is.na(sub$x[pos])) {
+
+               if (sub$day[i] != sub$day[pos]) {
+                  break
+               } else {
+                  xl[i] <- sub$x[pos]
+                  ll[i] <- lag[j]
+                  break
+               }
+
             }
 
          }
 
       }
 
-      return(xl)
+      return(data.frame(xl=xl, ll=ll))
 
    })
 
-   xl <- unsplit(xl, dat$id)
+   xl <- unsplit(lapply(res, function(x) x$xl), dat$id)
+   ll <- unsplit(lapply(res, function(x) x$ll), dat$id)
 
    #########################################################################
 
-   return(xl)
+   if (m == 1) {
+      return(xl)
+   } else {
+      return(data.frame(xl=xl, lag=ll))
+   }
 
 }
