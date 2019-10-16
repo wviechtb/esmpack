@@ -1,32 +1,43 @@
 aggitems <- function(items, data, min.k, na.rm=TRUE, fun=mean, verbose=TRUE) {
 
-   ### if 'data' is not a data frame, turn it into one
+   # if 'data' is not a data frame, turn it into one
 
    if (!(is.data.frame(data)))
       data <- data.frame(data)
 
-   ### get variable names in data frame
+   # get variable names in data frame
 
    varnames <- names(data)
 
-   ### number of variables in the data frame
+   # number of variables in the data frame
 
    nvars <- length(varnames)
 
-   ### check that 'items' argument is either a character or a numeric vector
+   # check that 'items' argument is either a character or a numeric vector
 
    if (!(is.character(items) | is.numeric(items)))
       stop(mstyle$stop("Argument 'items' must either be a character or a numeric vector."))
 
    if (is.character(items)) {
 
-      items.pos <- charmatch(items, varnames)
+      #items.pos <- charmatch(items, varnames)
+
+      items.pos <- lapply(items, function(x) {
+         pos <- grep(x, varnames, fixed=TRUE)
+         if (length(pos) == 0L) {
+            return(NA)
+         } else {
+            return(pos)
+         }
+      })
 
       if (any(is.na(items.pos)))
-         stop(ifelse(sum(is.na(items.pos)) == 1L, "Item ", "Items "), "(", paste(items[is.na(items.pos)], collapse=", "), ") not found in the data frame.")
+         stop(ifelse(sum(is.na(items.pos)) == 1L, "Item", "Items"), " not found in the data frame: ", paste(items[is.na(items.pos)], collapse=", "), ".")
 
-      if (any(items.pos == 0L))
-         stop("No ambiguous match found for ", ifelse(sum(items.pos == 0L) == 1L, "item ", "items "), "(", paste(items[items.pos == 0], collapse=", "), ").")
+      items.pos <- unique(unlist(items.pos))
+
+      #if (any(items.pos == 0L))
+      #   stop("No ambiguous match found for ", ifelse(sum(items.pos == 0L) == 1L, "item ", "items "), "(", paste(items[items.pos == 0], collapse=", "), ").")
 
    } else {
 
@@ -37,23 +48,23 @@ aggitems <- function(items, data, min.k, na.rm=TRUE, fun=mean, verbose=TRUE) {
 
    }
 
-   ### get items
+   # get items
 
    items <- data[items.pos]
 
-   ### apply function
+   # apply function
 
    x <- apply(items, 1, FUN = fun, na.rm = na.rm)
 
-   ### in case min.k is specified, apply the 'minimum k' rule
+   # in case min.k is specified, apply the 'minimum k' rule
 
    if (!missing(min.k)) {
       k.not.na <- apply(items, 1, FUN=function(x) sum(!is.na(x)))
       x[k.not.na < min.k] <- NA
    }
 
-   #if (verbose)
-   #   message(paste0("I just took the average of items ",
+   if (verbose)
+      message(paste0("Computed '", as.character(substitute(fun)), "' for these items: ", paste0(varnames[items.pos], collapse=", "), "."))
 
    return(x)
 
