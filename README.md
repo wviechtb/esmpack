@@ -1,9 +1,9 @@
-esmpack: Package to Facilitate Preparation and Management of ESM and EMA Data
-=============================================================================
+esmpack: A Package to Facilitate Preparation and Management of ESM/EMA Data
+===========================================================================
 
 ## Description
 
-The `esmpack` package is a collection of functions that facilitate data preparation, management, and analysis of data collected via the experience sampling method (ESM) and ecological momentary assessment (EMA).
+The `esmpack` package is a collection of functions that facilitate preparation, management, visualization, and analysis of data collected via the experience sampling method (ESM) and ecological momentary assessment (EMA).
 
 ## Installation
 
