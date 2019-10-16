@@ -39,7 +39,7 @@ aggitems <- function(items, data, min.k, na.rm=TRUE, fun=mean, verbose=TRUE) {
 
    ### get items
 
-   items <- data[items]
+   items <- data[items.pos]
 
    ### apply function
 
