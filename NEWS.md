@@ -1,3 +1,5 @@
-# esmpack 0.1-0 (2019-10-15)
+# esmpack 0.1-0 (2019-10-16)
+
+- added `combitems()` and `lagvar()` functions
 
 - initial setup for GitHub

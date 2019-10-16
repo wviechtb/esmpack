@@ -41,7 +41,7 @@ combitems <- function(items, data, fun = mean, na.rm = TRUE, min.k, verbose = TR
 
    } else {
 
-      items.pos <- round(items)
+      items.pos <- unique(round(items))
 
       if (min(items.pos) < 1 | max(items.pos) > nvars)
          stop("Item positions must be between 1 and ", nvars, ".")
@@ -66,9 +66,9 @@ combitems <- function(items, data, fun = mean, na.rm = TRUE, min.k, verbose = TR
       if (!is.numeric(min.k))
          stop("Argument 'min.k' must be a number.")
 
-      min.k <- round(min.k)
+      min.k <- as.integer(min.k)
 
-      if (min.k < 1 || min.k > length(items.pos))
+      if (min.k < 1L || min.k > length(items.pos))
          stop("Argument 'min.k' should be a number between 1 and the number of items to be combined.")
 
       k.not.na <- apply(items, 1, FUN = function(x) sum(!is.na(x)))
