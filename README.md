@@ -18,4 +18,4 @@ remotes::install_github("wviechtb/esmpack")
 
 ## Meta
 
-The `esmpack` package is licensed under the [GNU General Public License Version 2](http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt). To report any issues or bugs, please go [here](https://github.com/wviechtb/esmpack/issues).
+The `esmpack` package is licensed under the [GNU General Public License Version 2](https://www.gnu.org/licenses/old-licenses/gpl-2.0.txt). To report any issues or bugs, please go [here](https://github.com/wviechtb/esmpack/issues).
