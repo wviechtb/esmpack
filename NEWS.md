@@ -1,4 +1,6 @@
-# esmpack 0.1-4 (2019-11-02)
+# esmpack 0.1-5 (2019-11-02)
+
+- added `check.nodup()`
 
 - added `check.nomiss()` and updated `check.timeinvar()` to provide more output options
 

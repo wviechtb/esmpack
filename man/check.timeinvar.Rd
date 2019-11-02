@@ -1,7 +1,7 @@
 \name{check.timeinvar}
 \alias{check.timeinvar}
 \title{Check If Variable is Time-Invariant for Each Subject}
-\description{Function that checks if a variable is time-invariant variable for each subject.}
+\description{Function that checks if a variable is time-invariant for each subject.}
 \usage{
 check.timeinvar(x, id, data, out=1, na.rm=TRUE)
 }
