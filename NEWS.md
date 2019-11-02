@@ -1,6 +1,8 @@
-# esmpack 0.1-5 (2019-11-02)
+# esmpack 0.1-6 (2019-11-02)
 
-- added `check.nodup()`
+- added `calc.nomiss()` for computing the number of non-missing values for a particular variable
+
+- added `check.nodup()` to check if a variable has no duplicated values for each subject
 
 - added `check.nomiss()` and updated `check.timeinvar()` to provide more output options
 
