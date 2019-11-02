@@ -1,4 +1,6 @@
-# esmpack 0.1-8 (2019-11-02)
+# esmpack 0.1-9 (2019-11-03)
+
+- added `aggreg()` function
 
 - added `nsub()`, `calc.mean()`, and `calc.mcent()` functions
 
