@@ -1,4 +1,4 @@
-calc.center <- function(x, id, data, na.rm=TRUE) {
+calc.mcent <- function(x, id, data, na.rm=TRUE) {
 
    # check if 'data' argument has been specified
 

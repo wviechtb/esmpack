@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate the Mean-Centered Values of a Variable for Each Subject — calc.center • esmpack</title>
+<title>Calculate the Mean-Centered Values of a Variable for Each Subject — calc.mcent • esmpack</title>
 
 
 <!-- jquery -->
@@ -35,7 +35,7 @@
 
 
 
-<meta property="og:title" content="Calculate the Mean-Centered Values of a Variable for Each Subject — calc.center" />
+<meta property="og:title" content="Calculate the Mean-Centered Values of a Variable for Each Subject — calc.mcent" />
 <meta property="og:description" content="Function that calculates the mean-centered values of a particular variable for each subject." />
 <meta name="twitter:card" content="summary" />
 
@@ -119,14 +119,14 @@
     <div class="page-header">
     <h1>Calculate the Mean-Centered Values of a Variable for Each Subject</h1>
     
-    <div class="hidden name"><code>calc.center.Rd</code></div>
+    <div class="hidden name"><code>calc.mcent.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p>Function that calculates the mean-centered values of a particular variable for each subject.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>calc.center</span>(<span class='no'>x</span>, <span class='no'>id</span>, <span class='no'>data</span>, <span class='kw'>na.rm</span><span class='kw'>=</span><span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>calc.mcent</span>(<span class='no'>x</span>, <span class='no'>id</span>, <span class='no'>data</span>, <span class='kw'>na.rm</span><span class='kw'>=</span><span class='fl'>TRUE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -187,7 +187,7 @@
 #&gt; 19    4   4  22      3
 #&gt; 20    4   5  22      1</div><div class='input'>
 <span class='co'># calculate the mean-centered values of the stress variable</span>
-<span class='no'>dat</span>$<span class='no'>cstress</span> <span class='kw'>&lt;-</span> <span class='fu'>calc.center</span>(<span class='no'>stress</span>, <span class='no'>subj</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>)
+<span class='no'>dat</span>$<span class='no'>cstress</span> <span class='kw'>&lt;-</span> <span class='fu'>calc.mcent</span>(<span class='no'>stress</span>, <span class='no'>subj</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>)
 <span class='no'>dat</span></div><div class='output co'>#&gt;    subj obs age stress cstress
 #&gt; 1     1   1  20      2   -0.75
 #&gt; 2     1   2  20      3    0.25

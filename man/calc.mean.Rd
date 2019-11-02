@@ -24,7 +24,7 @@ calc.mean(x, id, data, na.rm=TRUE, expand=FALSE)
    Wolfgang Viechtbauer \email{wvb@wvbauer.com} \cr
 }
 \seealso{
-   \code{\link{calc.center}}
+   \code{\link{calc.mcent}}
 }
 \examples{
 # illustrative dataset

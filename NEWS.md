@@ -1,6 +1,6 @@
 # esmpack 0.1-8 (2019-11-02)
 
-- added `nsub()`, `calc.mean()`, and `calc.center()` functions
+- added `nsub()`, `calc.mean()`, and `calc.mcent()` functions
 
 - added `calc.nomiss()` for computing the number of non-missing values for a particular variable
 

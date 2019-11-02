@@ -1,9 +1,9 @@
-\name{calc.center}
-\alias{calc.center}
+\name{calc.mcent}
+\alias{calc.mcent}
 \title{Calculate the Mean-Centered Values of a Variable for Each Subject}
 \description{Function that calculates the mean-centered values of a particular variable for each subject.}
 \usage{
-calc.center(x, id, data, na.rm=TRUE)
+calc.mcent(x, id, data, na.rm=TRUE)
 }
 \arguments{
    \item{x}{vector to specify the variable.}
@@ -32,7 +32,7 @@ dat <- data.frame(subj=rep(1:4, each=5),
 dat
 
 # calculate the mean-centered values of the stress variable
-dat$cstress <- calc.center(stress, subj, data=dat)
+dat$cstress <- calc.mcent(stress, subj, data=dat)
 dat
 
 # calculate the subject-level means of the stress variable
