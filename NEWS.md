@@ -1,4 +1,6 @@
-# esmpack 0.1-3 (2019-10-19)
+# esmpack 0.1-4 (2019-11-02)
+
+- added `check.nomiss()` and updated `check.timeinvar()` to provide more output options
 
 - started using Travis CI
 

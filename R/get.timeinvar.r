@@ -35,7 +35,7 @@ get.timeinvar <- function(x, id, data, na.rm=TRUE) {
 
    # check that x is time-invariant within subjects
 
-   is.const <- check.timeinvar(x, id, which=TRUE)
+   is.const <- check.timeinvar(x, id, out=2)
 
    if (!is.null(is.const))
       warning("Variable 'x' is not time-invariant for the following subjects:\n  ", paste(is.const, collapse=", "))

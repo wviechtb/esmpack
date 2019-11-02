@@ -1,4 +1,4 @@
-check.timeinvar <- function(x, id, data, out=1, na.rm=TRUE) {
+check.nomiss <- function(x, id, data, out=1) {
 
    # check if 'data' argument has been specified
 
@@ -48,23 +48,11 @@ check.timeinvar <- function(x, id, data, out=1, na.rm=TRUE) {
 
    #########################################################################
 
-   # check if 'x' is time-invariant within subjects
+   # check if 'x' has no missing values within subjects
 
-   is.constant <- function(x, na.rm) {
-      if (all(is.na(x))) {
-         TRUE
-      } else {
-         res <- all(x == na.omit(x)[1], na.rm=na.rm)
-         res[is.na(res)] <- FALSE
-         res
-      }
-   }
+   nomiss <- tapply(x, id, function(x) !any(is.na(x)))
 
-   const <- tapply(x, id, is.constant, na.rm)
-
-   # check if 'x' is time-invariant for all subjects
-
-   all.const <- all(const)
+   all.nomiss <- all(nomiss)
 
    # get subject ids
 
@@ -75,7 +63,7 @@ check.timeinvar <- function(x, id, data, out=1, na.rm=TRUE) {
    # prepare output
 
    if (out == 1) {
-      if (all.const) {
+      if (all.nomiss) {
          return(TRUE)
       } else {
          return(FALSE)
@@ -83,18 +71,18 @@ check.timeinvar <- function(x, id, data, out=1, na.rm=TRUE) {
    }
 
    if (out == 2) {
-      if (all.const) {
+      if (all.nomiss) {
          return(NULL)
       } else {
-         return(ids[!const])
+         return(ids[!nomiss])
       }
    }
 
    if (out == 3) {
-      if (all.const) {
+      if (all.nomiss) {
          return(NULL)
       } else {
-         ids <- ids[!const]
+         ids <- ids[!nomiss]
          if (no.data) {
             return(data.frame(id, x)[id %in% ids,,drop=FALSE])
          } else {
