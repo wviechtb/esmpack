@@ -3,11 +3,15 @@ esmpack: A Package to Facilitate Preparation and Management of ESM/EMA Data
 
 [![Build Status](https://travis-ci.org/wviechtb/esmpack.svg?branch=master)](https://travis-ci.org/wviechtb/esmpack)
 ![CRAN Version](https://www.r-pkg.org/badges/version/esmpack)
-![devel Version](https://img.shields.io/badge/devel-0.1--7-brightgreen.svg)
+![devel Version](https://img.shields.io/badge/devel-0.1--8-brightgreen.svg)
 
 ## Description
 
 The `esmpack` package is a collection of functions that facilitate preparation, management, visualization, and analysis of data collected via the experience sampling method (ESM) and ecological momentary assessment (EMA).
+
+## Documentation
+
+You can also read the documentation online at [https://wviechtb.github.io/esmpack/](https://wviechtb.github.io/esmpack/) (where it is nicely formatted and the output from all examples is provided).
 
 ## Installation
 

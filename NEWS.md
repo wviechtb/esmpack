@@ -1,6 +1,6 @@
-# esmpack 0.1-7 (2019-11-02)
+# esmpack 0.1-8 (2019-11-02)
 
-- added `nsub()` and `calc.mean()` functions
+- added `nsub()`, `calc.mean()`, and `calc.center()` functions
 
 - added `calc.nomiss()` for computing the number of non-missing values for a particular variable
 
@@ -8,7 +8,7 @@
 
 - added `check.nomiss()` and updated `check.timeinvar()` to provide more output options
 
-- started using Travis CI
+- started using Travis CI (https://travis-ci.org/wviechtb/esmpack)
 
 - started on pkgdown website
 

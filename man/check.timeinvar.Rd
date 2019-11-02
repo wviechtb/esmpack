@@ -27,6 +27,9 @@ check.timeinvar(x, id, data, out=1, na.rm=TRUE)
 \author{
    Wolfgang Viechtbauer \email{wvb@wvbauer.com} \cr
 }
+\seealso{
+   \code{\link{get.timeinvar}}
+}
 \examples{
 # illustrative dataset
 dat <- data.frame(subj=rep(1:4, each=5),

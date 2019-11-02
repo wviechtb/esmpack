@@ -23,6 +23,9 @@ calc.mean(x, id, data, na.rm=TRUE, expand=FALSE)
 \author{
    Wolfgang Viechtbauer \email{wvb@wvbauer.com} \cr
 }
+\seealso{
+   \code{\link{calc.center}}
+}
 \examples{
 # illustrative dataset
 dat <- data.frame(subj=rep(1:4, each=5),
@@ -31,7 +34,7 @@ dat <- data.frame(subj=rep(1:4, each=5),
                   stress = c(2,3,NA,4,2, 3,3,NA,3,NA, 1,1,2,6,4, 1,2,1,3,1))
 dat
 
-# calculate the subject-level mean of the stress variable
+# calculate the subject-level means of the stress variable
 calc.mean(stress, subj, data=dat)
 
 # add this variable back to the original dataset

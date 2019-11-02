@@ -1,4 +1,4 @@
-calc.mean <- function(x, id, data, na.rm=TRUE, expand=FALSE) {
+calc.center <- function(x, id, data, na.rm=TRUE) {
 
    # check if 'data' argument has been specified
 
@@ -37,12 +37,8 @@ calc.mean <- function(x, id, data, na.rm=TRUE, expand=FALSE) {
 
    #########################################################################
 
-   if (expand) {
-      res <- ave(x, id, FUN=function(x) mean(x, na.rm=na.rm))
-   } else {
-      res <- tapply(x, id, FUN=mean, na.rm=na.rm)
-   }
+   mx <- ave(x, id, FUN=function(x) mean(x, na.rm=na.rm))
 
-   return(res)
+   return(x - mx)
 
 }
