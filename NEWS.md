@@ -1,4 +1,6 @@
-# esmpack 0.1-6 (2019-11-02)
+# esmpack 0.1-7 (2019-11-02)
+
+- added `nsub()` and `calc.mean()` functions
 
 - added `calc.nomiss()` for computing the number of non-missing values for a particular variable
 

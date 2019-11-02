@@ -1,7 +1,7 @@
 \name{get.timeinvar}
 \alias{get.timeinvar}
-\title{Get Value of Time-Invariant Variable for Each Subject}
-\description{Function that returns the value of a time-invariant variable per subject.}
+\title{Get the Value of a Time-Invariant Variable for Each Subject}
+\description{Function that returns the value of a time-invariant variable for each subject.}
 \usage{
 get.timeinvar(x, id, data, na.rm=TRUE)
 }

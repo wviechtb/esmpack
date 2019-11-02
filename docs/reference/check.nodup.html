@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">esmpack</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.6</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.7</span>
       </span>
     </div>
 
@@ -145,7 +145,7 @@
     </tr>
     <tr>
       <th>out</th>
-      <td><p>either a string or an integer (1 = <code>"logical"</code>, 2 = <code>"id"</code>, 3 = <code>"data"</code>) indicating what information should be returned in case there are subjects where the variable has duplicates.</p></td>
+      <td><p>either a string or an integer (<code>1</code> = <code>"logical"</code>, <code>2</code> = <code>"id"</code>, <code>3</code> = <code>"data"</code>) indicating what information should be returned in case there are subjects where the variable has duplicates.</p></td>
     </tr>
     <tr>
       <th>na.rm</th>
@@ -159,7 +159,7 @@
 <p>When <code>na.rm=TRUE</code> (the default), missing values are ignored. When setting <code>na.rm=FALSE</code>, then missing values are treated as distinct values from any non-missing values. See &#8216;Examples&#8217;.</p>
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>When <code>out = 1</code> or <code>out = "logical"</code>, the function simply returns a logical (i.e., <code>TRUE</code> or <code>FALSE</code>, depending on whether the variable has no duplicated values within each subject.</p>
+    <p>When <code>out = 1</code> or <code>out = "logical"</code>, the function simply returns a logical (i.e., <code>TRUE</code> or <code>FALSE</code>), depending on whether the variable has no duplicated values within each subject.</p>
 <p>When <code>out = 2</code> or <code>out = "id"</code>, the function returns a vector with the ids of those subjects where the variable has duplicated values.</p>
 <p>When <code>out = 3</code> or <code>out = "data"</code>, the function returns the data for those subjects where the variable has duplicated values.</p>
 

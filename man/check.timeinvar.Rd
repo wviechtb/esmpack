@@ -9,7 +9,7 @@ check.timeinvar(x, id, data, out=1, na.rm=TRUE)
    \item{x}{vector to specify the variable to check.}
    \item{id}{vector to specify a subject id variable.}
    \item{data}{optional data frame that contains the variables specified above.}
-   \item{out}{either a string or an integer (1 = \code{"logical"}, 2 = \code{"id"}, 3 = \code{"data"}) indicating what information should be returned in case there are subjects where the variable is not time-invariant.}
+   \item{out}{either a string or an integer (\code{1} = \code{"logical"}, \code{2} = \code{"id"}, \code{3} = \code{"data"}) indicating what information should be returned in case there are subjects where the variable is not time-invariant.}
    \item{na.rm}{logical indicating whether missing values should be removed before checking (default is \code{TRUE}).}
 }
 \details{
@@ -18,7 +18,7 @@ check.timeinvar(x, id, data, out=1, na.rm=TRUE)
    When \code{na.rm=TRUE} (the default), missing values are ignored. When setting \code{na.rm=FALSE}, then missing values are treated as distinct values from any non-missing values. See \sQuote{Examples}.
 }
 \value{
-   When \code{out = 1} or \code{out = "logical"}, the function simply returns a logical (i.e., \code{TRUE} or \code{FALSE}, depending on whether the variable is time-invariant within each subject or not.
+   When \code{out = 1} or \code{out = "logical"}, the function simply returns a logical (i.e., \code{TRUE} or \code{FALSE}), depending on whether the variable is time-invariant within each subject.
 
    When \code{out = 2} or \code{out = "id"}, the function returns a vector with the ids of those subjects where the variable is not time-invariant.
 

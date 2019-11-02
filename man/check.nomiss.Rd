@@ -9,13 +9,13 @@ check.nomiss(x, id, data, out=1)
    \item{x}{vector to specify the variable to check.}
    \item{id}{vector to specify a subject id variable.}
    \item{data}{optional data frame that contains the variables specified above.}
-   \item{out}{either a string or an integer (1 = \code{"logical"}, 2 = \code{"id"}, 3 = \code{"data"}) indicating what information should be returned in case there are subjects where the variable is not time-invariant.}
+   \item{out}{either a string or an integer (\code{1} = \code{"logical"}, \code{2} = \code{"id"}, \code{3} = \code{"data"}) indicating what information should be returned in case there are subjects where the variable is not time-invariant.}
 }
 \details{
    The function checks if the values of a variable do not contain any missing values for each subject.
 }
 \value{
-   When \code{out = 1} or \code{out = "logical"}, the function simply returns a logical (i.e., \code{TRUE} or \code{FALSE}, depending on whether the variable contains no missing values within each subject.
+   When \code{out = 1} or \code{out = "logical"}, the function simply returns a logical (i.e., \code{TRUE} or \code{FALSE}), depending on whether the variable contains no missing values within each subject.
 
    When \code{out = 2} or \code{out = "id"}, the function returns a vector with the ids of those subjects where the variable contains missing values.
 
