@@ -1,4 +1,4 @@
-combitems <- function(items, data, fun = mean, na.rm = TRUE, min.k, verbose = TRUE) {
+combitems <- function(items, data, grep=FALSE, fun=mean, na.rm=TRUE, min.k, verbose=TRUE) {
 
    # if 'data' is not a data frame, turn it into one
 
@@ -20,24 +20,29 @@ combitems <- function(items, data, fun = mean, na.rm = TRUE, min.k, verbose = TR
 
    if (is.character(items)) {
 
-      #items.pos <- charmatch(items, varnames)
+      if (grep) {
 
-      items.pos <- lapply(items, function(x) {
-         pos <- grep(x, varnames, fixed = TRUE)
-         if (length(pos) == 0L) {
-            return(NA)
-         } else {
+         items.pos <- lapply(items, function(x) {
+            pos <- grep(x, varnames, fixed = TRUE) # integer(0) if no match
+            if (length(pos) == 0L)
+               stop("Item '", x, "' not found in the data frame.", call.=FALSE)
+            return(pos) # might be multiple values
+         })
+
+      } else {
+
+         items.pos <- lapply(items, function(x) {
+            pos <- charmatch(x, varnames) # 0 if multiple matches, NA if no match
+            if (is.na(pos))
+               stop("Item '", x, "' not found in the data frame.", call.=FALSE)
+            if (pos == 0L)
+               stop("Multiple matches for item '", x, "' in the data frame.", call.=FALSE)
             return(pos)
-         }
-      })
+         })
 
-      if (any(is.na(items.pos)))
-         stop(ifelse(sum(is.na(items.pos)) == 1L, "Item", "Items"), " not found in the data frame: ", paste(items[is.na(items.pos)], collapse = ", "), ".")
+      }
 
       items.pos <- unique(unlist(items.pos))
-
-      #if (any(items.pos == 0L))
-      #   stop("No ambiguous match found for ", ifelse(sum(items.pos == 0L) == 1L, "item ", "items "), "(", paste(items[items.pos == 0], collapse = ", "), ").")
 
    } else {
 

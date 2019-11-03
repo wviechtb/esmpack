@@ -3,12 +3,13 @@
 \title{Aggregate Data to Subject Level}
 \description{Function that aggregates a dataset to the subject level.}
 \usage{
-aggreg(data, id, vars, na.rm=TRUE)
+aggreg(data, id, vars, grep=FALSE, na.rm=TRUE)
 }
 \arguments{
    \item{data}{data frame to aggregate.}
    \item{id}{vector to specify a subject id variable.}
-   \item{vars}{either a character vector giving the names of the variables to aggregate or a numeric vector giving the position of the columns in the data frame corresponding to the items.}
+   \item{vars}{optional character vector (giving the names of the variables to aggregate) or a numeric vector (giving the position of the columns in the data frame corresponding to the variables).}
+   \item{grep}{logical indicating whether variable names should be matched using \code{\link{grep}} (default is \code{FALSE}).}
    \item{na.rm}{logical indicating whether missing values should be removed before aggregating the variables (default is \code{TRUE}).}
 }
 \details{

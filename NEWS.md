@@ -1,4 +1,4 @@
-# esmpack 0.1-9 (2019-11-03)
+# esmpack 0.1-10 (2019-11-03)
 
 - added `aggreg()` function
 

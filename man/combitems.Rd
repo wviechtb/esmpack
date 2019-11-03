@@ -3,11 +3,12 @@
 \title{Combine Several Items}
 \description{Function to combine several items (e.g., by taking their mean).}
 \usage{
-combitems(items, data, fun = mean, na.rm = TRUE, min.k, verbose = TRUE)
+combitems(items, data, grep=FALSE, fun=mean, na.rm=TRUE, min.k, verbose=TRUE)
 }
 \arguments{
-   \item{items}{either a character vector giving the names of the variables to be combined or a numeric vector giving the position of the columns in the data frame corresponding to the items.}
+   \item{items}{either a character vector (giving the names of the variables to be combined) or a numeric vector (giving the position of the columns in the data frame corresponding to the items).}
    \item{data}{data frame that contains the items to be combined.}
+   \item{grep}{logical indicating whether item names should be matched using \code{\link{grep}} (default is \code{FALSE}).}
    \item{fun}{the function to be applied to the items (default is \code{mean}).}
    \item{na.rm}{logical indicating whether missing values should be removed before applying the function (default is \code{TRUE}).}
    \item{min.k}{integer specifying the minimum number of items that must be available (i.e., not missing). If not specified, no minimum is required.}
@@ -42,21 +43,21 @@ dat
 dat$pa <- combitems(c("mood_cheerf", "mood_relaxed", "mood_satisfi"), data=dat)
 dat
 
-# can also just specify substrings for the item names
-dat$pa <- combitems(c("cheerf", "relaxed", "satisfi"), data=dat)
+# can also grep for the item names
+dat$pa <- combitems(c("cheerf", "relaxed", "satisfi"), data=dat, grep=TRUE)
+dat
+
+# even shorter
+dat$pa <- combitems("mood", data=dat, grep=TRUE)
 dat
 
 # can also just specify the position of the items in the dataset
 dat$pa <- combitems(2:4, data=dat)
 dat
 
-# can also just specify a substring that is common to the items
-dat$pa <- combitems("mood", data=dat)
-dat
-
 # can specify the minimum number of required non-missing items
 # note: the mean for id=6 is NA because only one item is non-missing
-dat$pa <- combitems("mood", data=dat, min.k=2)
+dat$pa <- combitems("mood", data=dat, grep=TRUE, min.k=2)
 dat
 }
 \keyword{manip}

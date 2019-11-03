@@ -1,4 +1,4 @@
-aggreg <- function(data, id, vars, na.rm=TRUE) {
+aggreg <- function(data, id, vars, grep=FALSE, na.rm=TRUE) {
 
    # check if 'data' argument has been specified
 
@@ -44,19 +44,27 @@ aggreg <- function(data, id, vars, na.rm=TRUE) {
 
       if (is.character(vars)) {
 
-         #vars.pos <- charmatch(vars, varnames)
+         if (grep) {
 
-         vars.pos <- lapply(vars, function(x) {
-            pos <- grep(x, varnames, fixed = TRUE)
-            if (length(pos) == 0L) {
-               return(NA)
-            } else {
+            vars.pos <- lapply(vars, function(x) {
+               pos <- grep(x, varnames, fixed = TRUE) # integer(0) if no match
+               if (length(pos) == 0L)
+                  stop("Variable '", x, "' not found in the data frame.", call.=FALSE)
+               return(pos) # might be multiple values
+            })
+
+         } else {
+
+            vars.pos <- lapply(vars, function(x) {
+               pos <- charmatch(x, varnames) # 0 if multiple matches, NA if no match
+               if (is.na(pos))
+                  stop("Variable '", x, "' not found in the data frame.", call.=FALSE)
+               if (pos == 0L)
+                  stop("Multiple matches for variable '", x, "' in the data frame.", call.=FALSE)
                return(pos)
-            }
-         })
+            })
 
-         if (any(is.na(vars.pos)))
-            stop(ifelse(sum(is.na(vars.pos)) == 1L, "Variable", "Variables"), " not found in the data frame: ", paste(vars[is.na(vars.pos)], collapse = ", "), ".")
+         }
 
          vars.pos <- unique(unlist(vars.pos))
 

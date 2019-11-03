@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">esmpack</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.9</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.10</span>
       </span>
     </div>
 
@@ -126,18 +126,22 @@
     <p>Function to combine several items (e.g., by taking their mean).</p>
     </div>
 
-    <pre class="usage"><span class='fu'>combitems</span>(<span class='no'>items</span>, <span class='no'>data</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='no'>mean</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>min.k</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>combitems</span>(<span class='no'>items</span>, <span class='no'>data</span>, <span class='kw'>grep</span><span class='kw'>=</span><span class='fl'>FALSE</span>, <span class='kw'>fun</span><span class='kw'>=</span><span class='no'>mean</span>, <span class='kw'>na.rm</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='no'>min.k</span>, <span class='kw'>verbose</span><span class='kw'>=</span><span class='fl'>TRUE</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>items</th>
-      <td><p>either a character vector giving the names of the variables to be combined or a numeric vector giving the position of the columns in the data frame corresponding to the items.</p></td>
+      <td><p>either a character vector (giving the names of the variables to be combined) or a numeric vector (giving the position of the columns in the data frame corresponding to the items).</p></td>
     </tr>
     <tr>
       <th>data</th>
       <td><p>data frame that contains the items to be combined.</p></td>
+    </tr>
+    <tr>
+      <th>grep</th>
+      <td><p>logical indicating whether item names should be matched using <code><a href='https://rdrr.io/r/base/grep.html'>grep</a></code> (default is <code>FALSE</code>).</p></td>
     </tr>
     <tr>
       <th>fun</th>
@@ -198,8 +202,20 @@
 #&gt; 8   8           7            5            6 6.000000
 #&gt; 9   9           6            5            5 5.333333
 #&gt; 10 10           7            6            6 6.333333</div><div class='input'>
-<span class='co'># can also just specify substrings for the item names</span>
-<span class='no'>dat</span>$<span class='no'>pa</span> <span class='kw'>&lt;-</span> <span class='fu'>combitems</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"cheerf"</span>, <span class='st'>"relaxed"</span>, <span class='st'>"satisfi"</span>), <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>)</div><div class='output co'>#&gt; <span class='message'>Computed 'mean' for these items: mood_cheerf, mood_relaxed, mood_satisfi.</span></div><div class='input'><span class='no'>dat</span></div><div class='output co'>#&gt;    id mood_cheerf mood_relaxed mood_satisfi       pa
+<span class='co'># can also grep for the item names</span>
+<span class='no'>dat</span>$<span class='no'>pa</span> <span class='kw'>&lt;-</span> <span class='fu'>combitems</span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"cheerf"</span>, <span class='st'>"relaxed"</span>, <span class='st'>"satisfi"</span>), <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>grep</span><span class='kw'>=</span><span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Computed 'mean' for these items: mood_cheerf, mood_relaxed, mood_satisfi.</span></div><div class='input'><span class='no'>dat</span></div><div class='output co'>#&gt;    id mood_cheerf mood_relaxed mood_satisfi       pa
+#&gt; 1   1           5            6            6 5.666667
+#&gt; 2   2           6            6            6 6.000000
+#&gt; 3   3           6            6            5 5.666667
+#&gt; 4   4           6            7           NA 6.500000
+#&gt; 5   5           7            7            7 7.000000
+#&gt; 6   6           6           NA           NA 6.000000
+#&gt; 7   7           7            5            6 6.000000
+#&gt; 8   8           7            5            6 6.000000
+#&gt; 9   9           6            5            5 5.333333
+#&gt; 10 10           7            6            6 6.333333</div><div class='input'>
+<span class='co'># even shorter</span>
+<span class='no'>dat</span>$<span class='no'>pa</span> <span class='kw'>&lt;-</span> <span class='fu'>combitems</span>(<span class='st'>"mood"</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>grep</span><span class='kw'>=</span><span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; <span class='message'>Computed 'mean' for these items: mood_cheerf, mood_relaxed, mood_satisfi.</span></div><div class='input'><span class='no'>dat</span></div><div class='output co'>#&gt;    id mood_cheerf mood_relaxed mood_satisfi       pa
 #&gt; 1   1           5            6            6 5.666667
 #&gt; 2   2           6            6            6 6.000000
 #&gt; 3   3           6            6            5 5.666667
@@ -222,21 +238,9 @@
 #&gt; 8   8           7            5            6 6.000000
 #&gt; 9   9           6            5            5 5.333333
 #&gt; 10 10           7            6            6 6.333333</div><div class='input'>
-<span class='co'># can also just specify a substring that is common to the items</span>
-<span class='no'>dat</span>$<span class='no'>pa</span> <span class='kw'>&lt;-</span> <span class='fu'>combitems</span>(<span class='st'>"mood"</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>)</div><div class='output co'>#&gt; <span class='message'>Computed 'mean' for these items: mood_cheerf, mood_relaxed, mood_satisfi.</span></div><div class='input'><span class='no'>dat</span></div><div class='output co'>#&gt;    id mood_cheerf mood_relaxed mood_satisfi       pa
-#&gt; 1   1           5            6            6 5.666667
-#&gt; 2   2           6            6            6 6.000000
-#&gt; 3   3           6            6            5 5.666667
-#&gt; 4   4           6            7           NA 6.500000
-#&gt; 5   5           7            7            7 7.000000
-#&gt; 6   6           6           NA           NA 6.000000
-#&gt; 7   7           7            5            6 6.000000
-#&gt; 8   8           7            5            6 6.000000
-#&gt; 9   9           6            5            5 5.333333
-#&gt; 10 10           7            6            6 6.333333</div><div class='input'>
 <span class='co'># can specify the minimum number of required non-missing items</span>
 <span class='co'># note: the mean for id=6 is NA because only one item is non-missing</span>
-<span class='no'>dat</span>$<span class='no'>pa</span> <span class='kw'>&lt;-</span> <span class='fu'>combitems</span>(<span class='st'>"mood"</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>min.k</span><span class='kw'>=</span><span class='fl'>2</span>)</div><div class='output co'>#&gt; <span class='message'>Computed 'mean' for these items: mood_cheerf, mood_relaxed, mood_satisfi.</span></div><div class='input'><span class='no'>dat</span></div><div class='output co'>#&gt;    id mood_cheerf mood_relaxed mood_satisfi       pa
+<span class='no'>dat</span>$<span class='no'>pa</span> <span class='kw'>&lt;-</span> <span class='fu'>combitems</span>(<span class='st'>"mood"</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>grep</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>min.k</span><span class='kw'>=</span><span class='fl'>2</span>)</div><div class='output co'>#&gt; <span class='message'>Computed 'mean' for these items: mood_cheerf, mood_relaxed, mood_satisfi.</span></div><div class='input'><span class='no'>dat</span></div><div class='output co'>#&gt;    id mood_cheerf mood_relaxed mood_satisfi       pa
 #&gt; 1   1           5            6            6 5.666667
 #&gt; 2   2           6            6            6 6.000000
 #&gt; 3   3           6            6            5 5.666667
