@@ -1,4 +1,6 @@
-# esmpack 0.1-10 (2019-11-03)
+# esmpack 0.1-11 (2019-11-11)
+
+- added `mvvar()` function
 
 - added `aggreg()` function
 
