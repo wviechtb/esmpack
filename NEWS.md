@@ -1,4 +1,8 @@
-# esmpack 0.1-13 (2019-11-26)
+# esmpack 0.1-14 (2019-11-26)
+
+- in `lagvar()`, added `time` argument (that allows for computing the time difference between lagged observations) and made the examples for this function more complete
+
+- in `lagvar()`, moved `id` argument to the second position and made `obs` argument optional
 
 - added `mvvar()` function
 
