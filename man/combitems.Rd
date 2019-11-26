@@ -11,7 +11,7 @@ combitems(items, data, grep=FALSE, fun=mean, na.rm=TRUE, min.k, verbose=TRUE)
    \item{grep}{logical indicating whether item names should be matched using \code{\link{grep}} (default is \code{FALSE}).}
    \item{fun}{the function to be applied to the items (default is \code{mean}).}
    \item{na.rm}{logical indicating whether missing values should be removed before applying the function (default is \code{TRUE}).}
-   \item{min.k}{integer specifying the minimum number of items that must be available (i.e., not missing). If not specified, no minimum is required.}
+   \item{min.k}{optional integer specifying the minimum number of items that must be available (i.e., not missing). If not specified, no minimum is required.}
    \item{verbose}{logical indicating whether information about the items that were combined should be reported (default is \code{TRUE}).}
 }
 \details{
