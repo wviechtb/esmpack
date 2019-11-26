@@ -1,4 +1,4 @@
-lagvar <- function(x, obs, id, day, data, lag=1) {
+lagvar <- function(x, id, obs, day, data, lag=1) {
 
    # check if data argument has been specified
 
@@ -17,44 +17,39 @@ lagvar <- function(x, obs, id, day, data, lag=1) {
    # get x, id, obs, and day arguments (will be NULL when unspecified)
 
    mf.x   <- mf[[match("x",   names(mf))]]
-   mf.obs <- mf[[match("obs", names(mf))]]
    mf.id  <- mf[[match("id",  names(mf))]]
+   mf.obs <- mf[[match("obs", names(mf))]]
    mf.day <- mf[[match("day", names(mf))]]
    x      <- eval(mf.x,   data, enclos=sys.frame(sys.parent()))
-   obs    <- eval(mf.obs, data, enclos=sys.frame(sys.parent()))
    id     <- eval(mf.id,  data, enclos=sys.frame(sys.parent()))
+   obs    <- eval(mf.obs, data, enclos=sys.frame(sys.parent()))
    day    <- eval(mf.day, data, enclos=sys.frame(sys.parent()))
-
-   # if day variable is missing, set it to 1 for all observations
-   # that way, lags across days are possible / permitted
-
-   dayspec <- TRUE
-   if (is.null(day)) {
-      dayspec <- FALSE
-      day <- rep(1, length(x))
-   }
-
-   # check that x and obs have been specified
-
-   if (is.null(x))
-      stop("Argument 'x' must be specified.")
-   if (is.null(obs))
-      stop("Argument 'obs' must be specified.")
 
    # if 'id' is not specified, assume data are from a single subject
 
    if (is.null(id))
       id <- rep(1, length(x))
 
+   # if obs variable is missing, set it to consecutive integers within subjects
+
+   if (is.null(obs))
+      obs <- unsplit(lapply(split(id, id), seq_along), id)
+
+   # if day variable is missing, set it to 1 for all observations
+   # that way, lags across days are possible / permitted
+
+   if (is.null(day))
+      day <- rep(1, length(x))
+
+   # check that x has been specified
+
+   if (is.null(x))
+      stop("Argument 'x' must be specified.")
+
    # check that lengths of x, id, obs, and day match
 
-   if (any(length(x) != c(length(id), length(obs), length(day)))) {
-      if (dayspec) {
-         stop("Arguments 'x', 'id', 'obs', and 'day' must be of the same length.")
-      } else {
-         stop("Arguments 'x', 'id', and 'obs' must be of the same length.")
-      }
-   }
+   if (any(length(x) != c(length(id), length(obs), length(day))))
+      stop("Arguments 'x' and 'id' (and 'obs' and 'day' if specified) must be of the same length.")
 
    # checks on 'obs' argument
 

@@ -69,7 +69,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">esmpack</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.12</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.13</span>
       </span>
     </div>
 
@@ -126,7 +126,7 @@
     <p>Function to create a lagged variable.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>lagvar</span>(<span class='no'>x</span>, <span class='no'>obs</span>, <span class='no'>id</span>, <span class='no'>day</span>, <span class='no'>data</span>, <span class='kw'>lag</span><span class='kw'>=</span><span class='fl'>1</span>)</pre>
+    <pre class="usage"><span class='fu'>lagvar</span>(<span class='no'>x</span>, <span class='no'>id</span>, <span class='no'>obs</span>, <span class='no'>day</span>, <span class='no'>data</span>, <span class='kw'>lag</span><span class='kw'>=</span><span class='fl'>1</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -136,12 +136,12 @@
       <td><p>vector to specify the variable to be lagged.</p></td>
     </tr>
     <tr>
-      <th>obs</th>
-      <td><p>numeric vector that indicates the observation number of the values specified via the <code>x</code> argument.</p></td>
-    </tr>
-    <tr>
       <th>id</th>
       <td><p>optional vector to specify a subject id variable.</p></td>
+    </tr>
+    <tr>
+      <th>obs</th>
+      <td><p>optional numeric vector that indicates the observation number of the values specified via the <code>x</code> argument.</p></td>
     </tr>
     <tr>
       <th>day</th>
@@ -159,8 +159,9 @@
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>The function can be used to create a lagged version of the variable specified via the <code>x</code> argument. The <code>obs</code> argument is used to specify a variable that indicates the observation number of the values specified via the <code>x</code> argument. There should not be repeated values of <code>obs</code> (within the same subject, in case the dataset includes multiple subjects).</p>
+    <p>The function can be used to create a lagged version of the variable specified via the <code>x</code> argument.</p>
 <p>The (optional) <code>id</code> argument is used to specify a subject id variable. If not specified, all observations are assumed to come from the same subject.</p>
+<p>The (optional) <code>obs</code> argument is used to specify a variable that indicates the observation number of the values specified via the <code>x</code> argument. There should not be repeated values of <code>obs</code> (within the same subject, in case the dataset includes multiple subjects). If not specified, then consecutive observations from the same subjects are assumed to be one lag apart.</p>
 <p>The (optional) <code>day</code> variable is used to specify a day number variable. If not specified, then values of the variable to be lagged are allowed to be lagged across days (in case there are multiple observation days). If the <code>day</code> variable is specified, then lagged values across different days are not allowed (i.e., are set to missing).</p>
 <p>The <code>lag</code> argument is used to specify the number of lags (i.e., the lagged value of the variable at a particular observation number \(t\) is the value of the variable observed at observation number \(t - lag\)). If no lagged value is available at observation number \(t - lag\) (either because the dataset does not include that observation number or the value at that observation number is missing), then the lagged value will be missing.</p>
 <p>One can also specify multiple values for the <code>lag</code> argument (usually a consecutive range, such as <code>1:3</code>). In that case, the function will find the lagged value with the smallest lag and also indicate the lag of each lagged value. See &#8216;Examples&#8217;.</p>
@@ -172,6 +173,7 @@
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># illustrative dataset (5 beeps for 2 days for 2 subjects)</span>
 <span class='co'># note: beeps not responded to are not included in this dataset</span>
+<span class='co'># in this case, specifying the 'obs' variable (i.e., 'beep') is crucial</span>
 <span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.table</a></span>(<span class='kw'>header</span><span class='kw'>=</span><span class='fl'>TRUE</span>, <span class='kw'>text</span> <span class='kw'>=</span> <span class='st'>"
 subject dayno beep stress
 1 1 1  3
@@ -206,7 +208,7 @@ subject dayno beep stress
 #&gt; 14       2     2    9      5
 #&gt; 15       2     2   10      2</div><div class='input'>
 <span class='co'># lag the stress variable</span>
-<span class='no'>dat</span>$<span class='no'>stress_lag</span> <span class='kw'>&lt;-</span> <span class='fu'>lagvar</span>(<span class='no'>stress</span>, <span class='no'>beep</span>, <span class='no'>subject</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>)
+<span class='no'>dat</span>$<span class='no'>stress_lag</span> <span class='kw'>&lt;-</span> <span class='fu'>lagvar</span>(<span class='no'>stress</span>, <span class='kw'>id</span><span class='kw'>=</span><span class='no'>subject</span>, <span class='kw'>obs</span><span class='kw'>=</span><span class='no'>beep</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>)
 <span class='no'>dat</span></div><div class='output co'>#&gt;    subject dayno beep stress stress_lag
 #&gt; 1        1     1    1      3         NA
 #&gt; 2        1     1    2      2          3
@@ -225,7 +227,7 @@ subject dayno beep stress
 #&gt; 15       2     2   10      2          5</div><div class='input'>
 <span class='co'># but this also allows lagged values across days</span>
 <span class='co'># this can be avoided by specifying the day variable</span>
-<span class='no'>dat</span>$<span class='no'>stress_lag</span> <span class='kw'>&lt;-</span> <span class='fu'>lagvar</span>(<span class='no'>stress</span>, <span class='no'>beep</span>, <span class='no'>subject</span>, <span class='no'>dayno</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>)
+<span class='no'>dat</span>$<span class='no'>stress_lag</span> <span class='kw'>&lt;-</span> <span class='fu'>lagvar</span>(<span class='no'>stress</span>, <span class='kw'>id</span><span class='kw'>=</span><span class='no'>subject</span>, <span class='kw'>obs</span><span class='kw'>=</span><span class='no'>beep</span>, <span class='kw'>day</span><span class='kw'>=</span><span class='no'>dayno</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>)
 <span class='no'>dat</span></div><div class='output co'>#&gt;    subject dayno beep stress stress_lag
 #&gt; 1        1     1    1      3         NA
 #&gt; 2        1     1    2      2          3
@@ -243,7 +245,7 @@ subject dayno beep stress
 #&gt; 14       2     2    9      5         NA
 #&gt; 15       2     2   10      2          5</div><div class='input'>
 <span class='co'># lag the stress variable by two observations</span>
-<span class='no'>dat</span>$<span class='no'>stress_lag</span> <span class='kw'>&lt;-</span> <span class='fu'>lagvar</span>(<span class='no'>stress</span>, <span class='no'>beep</span>, <span class='no'>subject</span>, <span class='no'>dayno</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>lag</span><span class='kw'>=</span><span class='fl'>2</span>)
+<span class='no'>dat</span>$<span class='no'>stress_lag</span> <span class='kw'>&lt;-</span> <span class='fu'>lagvar</span>(<span class='no'>stress</span>, <span class='kw'>id</span><span class='kw'>=</span><span class='no'>subject</span>, <span class='kw'>obs</span><span class='kw'>=</span><span class='no'>beep</span>, <span class='kw'>day</span><span class='kw'>=</span><span class='no'>dayno</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>lag</span><span class='kw'>=</span><span class='fl'>2</span>)
 <span class='no'>dat</span></div><div class='output co'>#&gt;    subject dayno beep stress stress_lag
 #&gt; 1        1     1    1      3         NA
 #&gt; 2        1     1    2      2         NA
@@ -262,8 +264,8 @@ subject dayno beep stress
 #&gt; 15       2     2   10      2         NA</div><div class='input'>
 <span class='co'># lag the stress variable by up to 5 observations</span>
 <span class='co'># note: this creates two variables (xl and lag), which are both added to the dataset</span>
-<span class='no'>dat</span>$<span class='no'>stress_lag</span> <span class='kw'>&lt;-</span> <span class='fu'>lagvar</span>(<span class='no'>stress</span>, <span class='no'>beep</span>, <span class='no'>subject</span>, <span class='no'>dayno</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>lag</span><span class='kw'>=</span><span class='fl'>1</span>:<span class='fl'>5</span>)$<span class='no'>xl</span>
-<span class='no'>dat</span>$<span class='no'>lags</span> <span class='kw'>&lt;-</span> <span class='fu'>lagvar</span>(<span class='no'>stress</span>, <span class='no'>beep</span>, <span class='no'>subject</span>, <span class='no'>dayno</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>lag</span><span class='kw'>=</span><span class='fl'>1</span>:<span class='fl'>5</span>)$<span class='no'>lag</span>
+<span class='no'>dat</span>$<span class='no'>stress_lag</span> <span class='kw'>&lt;-</span> <span class='fu'>lagvar</span>(<span class='no'>stress</span>, <span class='kw'>id</span><span class='kw'>=</span><span class='no'>subject</span>, <span class='kw'>obs</span><span class='kw'>=</span><span class='no'>beep</span>, <span class='kw'>day</span><span class='kw'>=</span><span class='no'>dayno</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>lag</span><span class='kw'>=</span><span class='fl'>1</span>:<span class='fl'>5</span>)$<span class='no'>xl</span>
+<span class='no'>dat</span>$<span class='no'>lags</span> <span class='kw'>&lt;-</span> <span class='fu'>lagvar</span>(<span class='no'>stress</span>, <span class='kw'>id</span><span class='kw'>=</span><span class='no'>subject</span>, <span class='kw'>obs</span><span class='kw'>=</span><span class='no'>beep</span>, <span class='kw'>day</span><span class='kw'>=</span><span class='no'>dayno</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>lag</span><span class='kw'>=</span><span class='fl'>1</span>:<span class='fl'>5</span>)$<span class='no'>lag</span>
 <span class='no'>dat</span></div><div class='output co'>#&gt;    subject dayno beep stress stress_lag lags
 #&gt; 1        1     1    1      3         NA   NA
 #&gt; 2        1     1    2      2          3    1
@@ -325,7 +327,31 @@ subject dayno beep stress
 #&gt; 19       2     2    9      5
 #&gt; 20       2     2   10      2</div><div class='input'>
 <span class='co'># lag the stress variable</span>
-<span class='no'>dat</span>$<span class='no'>stress_lag</span> <span class='kw'>&lt;-</span> <span class='fu'>lagvar</span>(<span class='no'>stress</span>, <span class='no'>beep</span>, <span class='no'>subject</span>, <span class='no'>dayno</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>)
+<span class='no'>dat</span>$<span class='no'>stress_lag</span> <span class='kw'>&lt;-</span> <span class='fu'>lagvar</span>(<span class='no'>stress</span>, <span class='kw'>id</span><span class='kw'>=</span><span class='no'>subject</span>, <span class='kw'>obs</span><span class='kw'>=</span><span class='no'>beep</span>, <span class='kw'>day</span><span class='kw'>=</span><span class='no'>dayno</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>)
+<span class='no'>dat</span></div><div class='output co'>#&gt;    subject dayno beep stress stress_lag
+#&gt; 1        1     1    1      3         NA
+#&gt; 2        1     1    2      2          3
+#&gt; 3        1     1    3      4          2
+#&gt; 4        1     1    4      1          4
+#&gt; 5        1     1    5      2          1
+#&gt; 6        1     2    6      5         NA
+#&gt; 7        1     2    7      2          5
+#&gt; 8        1     2    8     NA          2
+#&gt; 9        1     2    9      3         NA
+#&gt; 10       1     2   10      3          3
+#&gt; 11       2     1    1      2         NA
+#&gt; 12       2     1    2      3          2
+#&gt; 13       2     1    3      2          3
+#&gt; 14       2     1    4     NA          2
+#&gt; 15       2     1    5     NA         NA
+#&gt; 16       2     2    6      1         NA
+#&gt; 17       2     2    7     NA          1
+#&gt; 18       2     2    8     NA         NA
+#&gt; 19       2     2    9      5         NA
+#&gt; 20       2     2   10      2          5</div><div class='input'>
+<span class='co'># in this example, consecutive observations from the same subject are each</span>
+<span class='co'># one lag apart, so one can leave out the 'obs' (i.e., 'beep') argument here</span>
+<span class='no'>dat</span>$<span class='no'>stress_lag</span> <span class='kw'>&lt;-</span> <span class='fu'>lagvar</span>(<span class='no'>stress</span>, <span class='kw'>id</span><span class='kw'>=</span><span class='no'>subject</span>, <span class='kw'>day</span><span class='kw'>=</span><span class='no'>dayno</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>)
 <span class='no'>dat</span></div><div class='output co'>#&gt;    subject dayno beep stress stress_lag
 #&gt; 1        1     1    1      3         NA
 #&gt; 2        1     1    2      2          3
@@ -348,8 +374,8 @@ subject dayno beep stress
 #&gt; 19       2     2    9      5         NA
 #&gt; 20       2     2   10      2          5</div><div class='input'>
 <span class='co'># lag the stress variable by up to 5 observations</span>
-<span class='no'>dat</span>$<span class='no'>stress_lag</span> <span class='kw'>&lt;-</span> <span class='fu'>lagvar</span>(<span class='no'>stress</span>, <span class='no'>beep</span>, <span class='no'>subject</span>, <span class='no'>dayno</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>lag</span><span class='kw'>=</span><span class='fl'>1</span>:<span class='fl'>5</span>)$<span class='no'>xl</span>
-<span class='no'>dat</span>$<span class='no'>lags</span> <span class='kw'>&lt;-</span> <span class='fu'>lagvar</span>(<span class='no'>stress</span>, <span class='no'>beep</span>, <span class='no'>subject</span>, <span class='no'>dayno</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>lag</span><span class='kw'>=</span><span class='fl'>1</span>:<span class='fl'>5</span>)$<span class='no'>lag</span>
+<span class='no'>dat</span>$<span class='no'>stress_lag</span> <span class='kw'>&lt;-</span> <span class='fu'>lagvar</span>(<span class='no'>stress</span>, <span class='kw'>id</span><span class='kw'>=</span><span class='no'>subject</span>, <span class='kw'>day</span><span class='kw'>=</span><span class='no'>dayno</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>lag</span><span class='kw'>=</span><span class='fl'>1</span>:<span class='fl'>5</span>)$<span class='no'>xl</span>
+<span class='no'>dat</span>$<span class='no'>lags</span> <span class='kw'>&lt;-</span> <span class='fu'>lagvar</span>(<span class='no'>stress</span>, <span class='kw'>id</span><span class='kw'>=</span><span class='no'>subject</span>, <span class='kw'>day</span><span class='kw'>=</span><span class='no'>dayno</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>lag</span><span class='kw'>=</span><span class='fl'>1</span>:<span class='fl'>5</span>)$<span class='no'>lag</span>
 <span class='no'>dat</span></div><div class='output co'>#&gt;    subject dayno beep stress stress_lag lags
 #&gt; 1        1     1    1      3         NA   NA
 #&gt; 2        1     1    2      2          3    1
