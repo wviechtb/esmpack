@@ -19,7 +19,7 @@ lagvar(x, id, obs, day, time, data, lag=1)
 
    The (optional) \code{id} argument is used to specify a subject id variable. If not specified, all observations are assumed to come from the same subject. If the dataset includes multiple subjects, then this variable needs to be specified so that observations are not lagged across subjects.
 
-   The (optional) \code{obs} argument is used to specify a variable that indicates the observation number of the values specified via the \code{x} argument. There should not be repeated values of \code{obs} (within the same subject, in case the dataset includes multiple subjects). If not specified, then consecutive observations from the same subjects are assumed to be one lag apart.
+   The (optional) \code{obs} argument is used to specify a variable that indicates the observation number of the values specified via the \code{x} argument. There should not be repeated values of \code{obs} (within the same subject, in case the dataset includes multiple subjects). If not specified, then consecutive observations from the same subject are assumed to be one lag apart.
 
    The (optional) \code{day} variable is used to specify a day number variable. If not specified, then values of the variable to be lagged are allowed to be lagged across days (in case there are multiple observation days). If the \code{day} variable is specified, then lagged values across different days are not allowed (i.e., are set to missing).
 
@@ -59,6 +59,7 @@ c(1L, 2L, 3L, 4L, 5L, 6L, 7L, 8L, 9L, 10L, 11L, 12L, 13L, 14L, 15L, 16L,
 relaxed = c(2, 6, 6, 6, 5, 6, 6, 6, NA, 5, 1, NA, 6, 6, 6, NA, 6, 6, 6, 4,
 2, 7, 7, NA, NA, 7, 7, 1, 7, 6, NA, 7, 6, NA, NA, NA, 7, 4, 7, 7)),
 row.names = c(NA, 40L), class = "data.frame")
+dat
 
 # lag the relaxed variable
 dat$relaxed_lag <- lagvar(relaxed, id=subject, obs=beep, data=dat)
