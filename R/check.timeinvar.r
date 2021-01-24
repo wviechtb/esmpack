@@ -35,6 +35,10 @@ check.timeinvar <- function(x, id, data, out=1, na.rm=TRUE) {
    if (any(is.na(id)))
       stop("Argument 'id' should not contain any NAs.")
 
+   # make sure id is a character variable
+
+   id <- as.character(id)
+
    # check 'out' argument
 
    if (is.character(out)) {
