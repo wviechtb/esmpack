@@ -15,8 +15,9 @@ You can also read the documentation online at [https://wviechtb.github.io/esmpac
 
 ## Installation
 
-After installing the [remotes](https://cran.r-project.org/package=remotes) package with ```install.packages("remotes")```, the development version of the `esmpack` package can be installed with:
+The development version of the `esmpack` package can be installed with:
 ```r
+install.packages("remotes")
 remotes::install_github("wviechtb/esmpack")
 ```
 
