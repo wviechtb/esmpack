@@ -26,8 +26,10 @@ dat <- data.frame(subj=rep(1:4, each=5),
                   stress = c(2,3,NA,4,2, 3,3,NA,3,NA, 1,1,2,6,4, 1,2,1,3,1))
 dat
 
-# number of subjects
+# compute the number of subjects
 nsub(subj, dat)
+
+# or specify the subject variable this way
 nsub(dat$subj)
 }
 \keyword{manip}

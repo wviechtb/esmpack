@@ -6,8 +6,8 @@
 calc.mean(x, id, data, na.rm=TRUE, expand=FALSE)
 }
 \arguments{
-   \item{x}{vector to specify the variable.}
-   \item{id}{vector to specify a subject id variable.}
+   \item{x}{argument to specify the variable.}
+   \item{id}{argument to specify a subject id variable.}
    \item{data}{optional data frame that contains the variables specified above.}
    \item{na.rm}{logical indicating whether missing values should be removed before computing the means (default is \code{TRUE}).}
    \item{expand}{logical indicating whether to expand the returned vector so that it can be added back to the dataset as a new variable (default is \code{FALSE}).}

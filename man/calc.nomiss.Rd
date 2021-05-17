@@ -6,8 +6,8 @@
 calc.nomiss(x, id, data, prop=FALSE, expand=FALSE)
 }
 \arguments{
-   \item{x}{vector to specify the variable.}
-   \item{id}{vector to specify a subject id variable.}
+   \item{x}{argument to specify the variable.}
+   \item{id}{argument to specify a subject id variable.}
    \item{data}{optional data frame that contains the variables specified above.}
    \item{prop}{logical indicating whether to return proportions instead of counts (default is \code{FALSE}).}
    \item{expand}{logical indicating whether to expand the returned vector so that it can be added back to the dataset as a new variable (default is \code{FALSE}).}

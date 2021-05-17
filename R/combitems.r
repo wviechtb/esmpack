@@ -61,6 +61,10 @@ combitems <- function(items, data, grep=FALSE, fun=mean, na.rm=TRUE, min.k, verb
 
    x <- apply(items, 1, FUN = fun, na.rm = na.rm)
 
+   # replace NaN () with NA
+
+   x[is.nan(x)] <- NA
+
    # in case min.k is specified, apply the 'minimum k' rule
 
    if (!missing(min.k)) {

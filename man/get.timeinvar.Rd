@@ -6,8 +6,8 @@
 get.timeinvar(x, id, data, na.rm=TRUE)
 }
 \arguments{
-   \item{x}{vector to specify the time-invariant variable.}
-   \item{id}{vector to specify a subject id variable.}
+   \item{x}{argument to specify the time-invariant variable.}
+   \item{id}{argument to specify a subject id variable.}
    \item{data}{optional data frame that contains the variables specified above.}
    \item{na.rm}{logical indicating whether missing values should be removed (default is \code{TRUE}).}
 }

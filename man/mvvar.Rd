@@ -28,9 +28,11 @@ dat <- data.frame(subj=rep(1:4, each=5),
                   stress = c(2,3,1,4,2, 3,3,3,3,3, 1,1,2,6,4, 1,2,1,3,1))
 dat
 
+# move variable age after subj
 dat <- mvvar("age", "subj", data=dat)
 dat
 
+# move variable obs before age
 dat <- mvvar("obs", "age", after=FALSE, data=dat)
 dat
 }

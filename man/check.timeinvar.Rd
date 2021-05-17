@@ -1,13 +1,13 @@
 \name{check.timeinvar}
 \alias{check.timeinvar}
-\title{Check If Variable is Time-Invariant for Each Subject}
+\title{Check if Variable is Time-Invariant for Each Subject}
 \description{Function that checks if a variable is time-invariant for each subject.}
 \usage{
 check.timeinvar(x, id, data, out=1, na.rm=TRUE)
 }
 \arguments{
-   \item{x}{vector to specify the variable to check.}
-   \item{id}{vector to specify a subject id variable.}
+   \item{x}{argument to specify the variable to check.}
+   \item{id}{argument to specify a subject id variable.}
    \item{data}{optional data frame that contains the variables specified above.}
    \item{out}{either a string or an integer (\code{1} = \code{"logical"}, \code{2} = \code{"id"}, \code{3} = \code{"data"}) indicating what information should be returned in case there are subjects where the variable is not time-invariant.}
    \item{na.rm}{logical indicating whether missing values should be removed before checking (default is \code{TRUE}).}

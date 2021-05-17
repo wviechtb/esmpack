@@ -1,13 +1,13 @@
 \name{aggreg}
 \alias{aggreg}
-\title{Aggregate Data to Subject Level}
+\title{Aggregate Data to the Subject Level}
 \description{Function that aggregates a dataset to the subject level.}
 \usage{
 aggreg(data, id, vars, grep=FALSE, na.rm=TRUE)
 }
 \arguments{
    \item{data}{data frame to aggregate.}
-   \item{id}{vector to specify a subject id variable.}
+   \item{id}{argument to specify a subject id variable.}
    \item{vars}{optional character vector (giving the names of the variables to aggregate) or a numeric vector (giving the position of the columns in the data frame corresponding to the variables).}
    \item{grep}{logical indicating whether variable names should be matched using \code{\link{grep}} (default is \code{FALSE}).}
    \item{na.rm}{logical indicating whether missing values should be removed before aggregating the variables (default is \code{TRUE}).}
@@ -34,7 +34,7 @@ dat
 aggreg(dat, subj)
 
 # aggregate the dataset for selected variables
-aggreg(dat, subj, vars=c("subj", "stress"))
+aggreg(dat, subj, vars=c("subj","stress"))
 
 # aggregate the dataset for selected variables
 aggreg(dat, subj, vars=1:2)

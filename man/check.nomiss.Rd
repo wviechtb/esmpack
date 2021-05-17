@@ -1,13 +1,13 @@
 \name{check.nomiss}
 \alias{check.nomiss}
-\title{Check If Variable has No Missings for Each Subject}
+\title{Check if Variable has No Missings for Each Subject}
 \description{Function that checks if a variable has no missing values for each subject.}
 \usage{
 check.nomiss(x, id, data, out=1)
 }
 \arguments{
-   \item{x}{vector to specify the variable to check.}
-   \item{id}{vector to specify a subject id variable.}
+   \item{x}{argument to specify the variable to check.}
+   \item{id}{argument to specify a subject id variable.}
    \item{data}{optional data frame that contains the variables specified above.}
    \item{out}{either a string or an integer (\code{1} = \code{"logical"}, \code{2} = \code{"id"}, \code{3} = \code{"data"}) indicating what information should be returned in case there are subjects where the variable is not time-invariant.}
 }

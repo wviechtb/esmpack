@@ -85,7 +85,7 @@ aggreg <- function(data, id, vars, grep=FALSE, na.rm=TRUE) {
 
    res <- stats::aggregate(data, by = list(id),
       FUN = function(x, rm.na=na.rm) {
-         if (is.element(class(x), c("numeric","integer","logical"))) {
+         if (inherits(x, c("numeric","integer","logical"))) {
             mean(x, na.rm=rm.na)
          } else if (class(x) == "factor") {
             if (rm.na) droplevels(na.omit(x)[1]) else droplevels(x[1])

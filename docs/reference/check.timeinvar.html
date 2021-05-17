@@ -6,27 +6,31 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Check If Variable is Time-Invariant for Each Subject — check.timeinvar • esmpack</title>
+<title>Check if Variable is Time-Invariant for Each Subject — check.timeinvar • esmpack</title>
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -35,9 +39,10 @@
 
 
 
-<meta property="og:title" content="Check If Variable is Time-Invariant for Each Subject — check.timeinvar" />
+<meta property="og:title" content="Check if Variable is Time-Invariant for Each Subject — check.timeinvar" />
 <meta property="og:description" content="Function that checks if a variable is time-invariant for each subject." />
-<meta name="twitter:card" content="summary" />
+
+
 
 
 
@@ -53,9 +58,18 @@
 
 
 
+<!-- dependencies from examples -->
+
+
+  
+
+  
+
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -69,7 +83,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">esmpack</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1-15</span>
       </span>
     </div>
 
@@ -77,7 +91,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -94,13 +108,13 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://twitter.com/wviechtb">
-    <span class="fa fa-twitter"></span>
+    <span class="fas fa-twitter"></span>
      
   </a>
 </li>
 <li>
   <a href="https://github.com/wviechtb/esmpack">
-    <span class="fa fa-github"></span>
+    <span class="fas fa-github"></span>
      
   </a>
 </li>
@@ -117,7 +131,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Check If Variable is Time-Invariant for Each Subject</h1>
+    <h1>Check if Variable is Time-Invariant for Each Subject</h1>
     
     <div class="hidden name"><code>check.timeinvar.Rd</code></div>
     </div>
@@ -126,18 +140,18 @@
     <p>Function that checks if a variable is time-invariant for each subject.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>check.timeinvar</span>(<span class='no'>x</span>, <span class='no'>id</span>, <span class='no'>data</span>, <span class='kw'>out</span><span class='kw'>=</span><span class='fl'>1</span>, <span class='kw'>na.rm</span><span class='kw'>=</span><span class='fl'>TRUE</span>)</pre>
+    <pre class="usage"><span class='fu'>check.timeinvar</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>id</span>, <span class='va'>data</span>, out<span class='op'>=</span><span class='fl'>1</span>, na.rm<span class='op'>=</span><span class='cn'>TRUE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>vector to specify the variable to check.</p></td>
+      <td><p>argument to specify the variable to check.</p></td>
     </tr>
     <tr>
       <th>id</th>
-      <td><p>vector to specify a subject id variable.</p></td>
+      <td><p>argument to specify a subject id variable.</p></td>
     </tr>
     <tr>
       <th>data</th>
@@ -162,17 +176,21 @@
     <p>When <code>out = 1</code> or <code>out = "logical"</code>, the function simply returns a logical (i.e., <code>TRUE</code> or <code>FALSE</code>), depending on whether the variable is time-invariant within each subject.</p>
 <p>When <code>out = 2</code> or <code>out = "id"</code>, the function returns a vector with the ids of those subjects where the variable is not time-invariant.</p>
 <p>When <code>out = 3</code> or <code>out = "data"</code>, the function returns the data for those subjects where the variable is not time-invariant.</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Wolfgang Viechtbauer <a href='mailto:wvb@wvbauer.com'>wvb@wvbauer.com</a> <br /></p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code><a href='get.timeinvar.html'>get.timeinvar</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># illustrative dataset</span>
-<span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>subj</span><span class='kw'>=</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fl'>1</span>:<span class='fl'>4</span>, <span class='kw'>each</span><span class='kw'>=</span><span class='fl'>5</span>),
-                  <span class='kw'>obs</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>5</span>,
-                  <span class='kw'>age</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>20</span>,<span class='fl'>31</span>,<span class='fl'>27</span>,<span class='fl'>22</span>), <span class='kw'>each</span><span class='kw'>=</span><span class='fl'>5</span>),
-                  <span class='kw'>stress</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>,<span class='fl'>3</span>,<span class='fl'>1</span>,<span class='fl'>4</span>,<span class='fl'>2</span>, <span class='fl'>3</span>,<span class='fl'>3</span>,<span class='fl'>3</span>,<span class='fl'>3</span>,<span class='fl'>3</span>, <span class='fl'>1</span>,<span class='fl'>1</span>,<span class='fl'>2</span>,<span class='fl'>6</span>,<span class='fl'>4</span>, <span class='fl'>1</span>,<span class='fl'>2</span>,<span class='fl'>1</span>,<span class='fl'>3</span>,<span class='fl'>1</span>))
-<span class='no'>dat</span></div><div class='output co'>#&gt;    subj obs age stress
+<span class='va'>dat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>subj<span class='op'>=</span><span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>4</span>, each<span class='op'>=</span><span class='fl'>5</span><span class='op'>)</span>,
+                  obs <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>,
+                  age <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>20</span>,<span class='fl'>31</span>,<span class='fl'>27</span>,<span class='fl'>22</span><span class='op'>)</span>, each<span class='op'>=</span><span class='fl'>5</span><span class='op'>)</span>,
+                  stress <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>,<span class='fl'>3</span>,<span class='fl'>1</span>,<span class='fl'>4</span>,<span class='fl'>2</span>, <span class='fl'>3</span>,<span class='fl'>3</span>,<span class='fl'>3</span>,<span class='fl'>3</span>,<span class='fl'>3</span>, <span class='fl'>1</span>,<span class='fl'>1</span>,<span class='fl'>2</span>,<span class='fl'>6</span>,<span class='fl'>4</span>, <span class='fl'>1</span>,<span class='fl'>2</span>,<span class='fl'>1</span>,<span class='fl'>3</span>,<span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>
+<span class='va'>dat</span>
+</div><div class='co'>#&gt;    subj obs age stress
 #&gt; 1     1   1  20      2
 #&gt; 2     1   2  20      3
 #&gt; 3     1   3  20      1
@@ -194,13 +212,17 @@
 #&gt; 19    4   4  22      3
 #&gt; 20    4   5  22      1</div><div class='input'>
 <span class='co'># check the age variable</span>
-<span class='fu'>check.timeinvar</span>(<span class='no'>age</span>, <span class='no'>subj</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
+<span class='fu'>check.timeinvar</span><span class='op'>(</span><span class='va'>age</span>, <span class='va'>subj</span>, data<span class='op'>=</span><span class='va'>dat</span><span class='op'>)</span>
+</div><div class='co'>#&gt; [1] TRUE</div><div class='input'>
 <span class='co'># check the stress variable</span>
-<span class='fu'>check.timeinvar</span>(<span class='no'>stress</span>, <span class='no'>subj</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>)</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'>
+<span class='fu'>check.timeinvar</span><span class='op'>(</span><span class='va'>stress</span>, <span class='va'>subj</span>, data<span class='op'>=</span><span class='va'>dat</span><span class='op'>)</span>
+</div><div class='co'>#&gt; [1] FALSE</div><div class='input'>
 <span class='co'># for which subjects is stress non-constant</span>
-<span class='fu'>check.timeinvar</span>(<span class='no'>stress</span>, <span class='no'>subj</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>out</span><span class='kw'>=</span><span class='fl'>2</span>)</div><div class='output co'>#&gt; [1] 1 3 4</div><div class='input'>
+<span class='fu'>check.timeinvar</span><span class='op'>(</span><span class='va'>stress</span>, <span class='va'>subj</span>, data<span class='op'>=</span><span class='va'>dat</span>, out<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span>
+</div><div class='co'>#&gt; [1] "1" "3" "4"</div><div class='input'>
 <span class='co'># show the data for those subjects</span>
-<span class='fu'>check.timeinvar</span>(<span class='no'>stress</span>, <span class='no'>subj</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>out</span><span class='kw'>=</span><span class='fl'>3</span>)</div><div class='output co'>#&gt;    subj obs age stress
+<span class='fu'>check.timeinvar</span><span class='op'>(</span><span class='va'>stress</span>, <span class='va'>subj</span>, data<span class='op'>=</span><span class='va'>dat</span>, out<span class='op'>=</span><span class='fl'>3</span><span class='op'>)</span>
+</div><div class='co'>#&gt;    subj obs age stress
 #&gt; 1     1   1  20      2
 #&gt; 2     1   2  20      3
 #&gt; 3     1   3  20      1
@@ -217,39 +239,35 @@
 #&gt; 19    4   4  22      3
 #&gt; 20    4   5  22      1</div><div class='input'>
 <span class='co'># by default missings are ignored</span>
-<span class='no'>dat</span>$<span class='no'>age</span>[<span class='fl'>2</span>] <span class='kw'>&lt;-</span> <span class='fl'>NA</span>
-<span class='fu'>check.timeinvar</span>(<span class='no'>age</span>, <span class='no'>subj</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>)</div><div class='output co'>#&gt; [1] TRUE</div><div class='input'>
+<span class='va'>dat</span><span class='op'>$</span><span class='va'>age</span><span class='op'>[</span><span class='fl'>2</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='cn'>NA</span>
+<span class='fu'>check.timeinvar</span><span class='op'>(</span><span class='va'>age</span>, <span class='va'>subj</span>, data<span class='op'>=</span><span class='va'>dat</span><span class='op'>)</span>
+</div><div class='co'>#&gt; [1] TRUE</div><div class='input'>
 <span class='co'># treat NAs as distinct values</span>
-<span class='fu'>check.timeinvar</span>(<span class='no'>age</span>, <span class='no'>subj</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>na.rm</span><span class='kw'>=</span><span class='fl'>FALSE</span>)</div><div class='output co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>check.timeinvar</span>(<span class='no'>age</span>, <span class='no'>subj</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>na.rm</span><span class='kw'>=</span><span class='fl'>FALSE</span>, <span class='kw'>out</span><span class='kw'>=</span><span class='fl'>2</span>)</div><div class='output co'>#&gt; [1] 1</div><div class='input'><span class='fu'>check.timeinvar</span>(<span class='no'>age</span>, <span class='no'>subj</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>na.rm</span><span class='kw'>=</span><span class='fl'>FALSE</span>, <span class='kw'>out</span><span class='kw'>=</span><span class='fl'>3</span>)</div><div class='output co'>#&gt;   subj obs age stress
+<span class='fu'>check.timeinvar</span><span class='op'>(</span><span class='va'>age</span>, <span class='va'>subj</span>, data<span class='op'>=</span><span class='va'>dat</span>, na.rm<span class='op'>=</span><span class='cn'>FALSE</span><span class='op'>)</span>
+</div><div class='co'>#&gt; [1] FALSE</div><div class='input'><span class='fu'>check.timeinvar</span><span class='op'>(</span><span class='va'>age</span>, <span class='va'>subj</span>, data<span class='op'>=</span><span class='va'>dat</span>, na.rm<span class='op'>=</span><span class='cn'>FALSE</span>, out<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span>
+</div><div class='co'>#&gt; [1] "1"</div><div class='input'><span class='fu'>check.timeinvar</span><span class='op'>(</span><span class='va'>age</span>, <span class='va'>subj</span>, data<span class='op'>=</span><span class='va'>dat</span>, na.rm<span class='op'>=</span><span class='cn'>FALSE</span>, out<span class='op'>=</span><span class='fl'>3</span><span class='op'>)</span>
+</div><div class='co'>#&gt;   subj obs age stress
 #&gt; 1    1   1  20      2
 #&gt; 2    1   2  NA      3
 #&gt; 3    1   3  20      1
 #&gt; 4    1   4  20      4
 #&gt; 5    1   5  20      2</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#details">Details</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#see-also">See also</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
-    <h2>Author</h2>
-    <p>Wolfgang Viechtbauer <a href='mailto:wvb@wvbauer.com'>wvb@wvbauer.com</a> <br /></p>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
 
       <footer>
       <div class="copyright">
-  <p>Developed by Wolfgang Viechtbauer, Mihail Constantin.</p>
+  <p><p>Developed by Wolfgang Viechtbauer, Mihail Constantin.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>
@@ -257,6 +275,8 @@
 
   
 
+
+  
 
   </body>
 </html>

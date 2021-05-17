@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -37,7 +41,8 @@
 
 <meta property="og:title" content="Create a Lagged Variable — lagvar" />
 <meta property="og:description" content="Function to create a lagged variable." />
-<meta name="twitter:card" content="summary" />
+
+
 
 
 
@@ -53,9 +58,18 @@
 
 
 
+<!-- dependencies from examples -->
+
+
+  
+
+  
+
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -69,7 +83,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">esmpack</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.14</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1-15</span>
       </span>
     </div>
 
@@ -77,7 +91,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -94,13 +108,13 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://twitter.com/wviechtb">
-    <span class="fa fa-twitter"></span>
+    <span class="fas fa-twitter"></span>
      
   </a>
 </li>
 <li>
   <a href="https://github.com/wviechtb/esmpack">
-    <span class="fa fa-github"></span>
+    <span class="fas fa-github"></span>
      
   </a>
 </li>
@@ -126,30 +140,30 @@
     <p>Function to create a lagged variable.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>lagvar</span>(<span class='no'>x</span>, <span class='no'>id</span>, <span class='no'>obs</span>, <span class='no'>day</span>, <span class='no'>time</span>, <span class='no'>data</span>, <span class='kw'>lag</span><span class='kw'>=</span><span class='fl'>1</span>)</pre>
+    <pre class="usage"><span class='fu'>lagvar</span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>id</span>, <span class='va'>obs</span>, <span class='va'>day</span>, <span class='va'>time</span>, <span class='va'>data</span>, lag<span class='op'>=</span><span class='fl'>1</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>vector to specify the variable to be lagged.</p></td>
+      <td><p>argument to specify the variable to be lagged.</p></td>
     </tr>
     <tr>
       <th>id</th>
-      <td><p>optional vector to specify a subject id variable.</p></td>
+      <td><p>optional argument to specify a subject id variable.</p></td>
     </tr>
     <tr>
       <th>obs</th>
-      <td><p>optional numeric vector that indicates the observation number of the values specified via the <code>x</code> argument.</p></td>
+      <td><p>optional argument that indicates the observation number of the values specified via the <code>x</code> argument.</p></td>
     </tr>
     <tr>
       <th>day</th>
-      <td><p>optional vector to specify a day number variable.</p></td>
+      <td><p>optional argument to specify a day number variable.</p></td>
     </tr>
     <tr>
       <th>time</th>
-      <td><p>optional vector to specify a variable that indicates the actual date and time of the observations.</p></td>
+      <td><p>optional argument to specify a variable that indicates the actual date and time of the observations.</p></td>
     </tr>
     <tr>
       <th>data</th>
@@ -175,28 +189,32 @@
     <p>If <code>lag</code> is a single number, the function returns a vector with the lagged values (that will typically be added back to the data frame as a new variable).</p>
 <p>If a <code>time</code> variable is also specified, then the function returns a data frame with elements <code>xl</code> for the lagged values and <code>timelag</code> for the time lag between the observations (in seconds if the <code>time</code> variable was of class <code>POSIXct</code> and otherwise in the units of the <code>time</code> variable).</p>
 <p>If multiple values are specified for <code>lag</code>, the function returns a data frame with elements <code>xl</code> for the lagged values and <code>lag</code> for the lag of those values (and again <code>timelag</code> if a <code>time</code> variable was also specified).</p>
+    <h2 class="hasAnchor" id="author"><a class="anchor" href="#author"></a>Author</h2>
+
+    <p>Wolfgang Viechtbauer <a href='mailto:wvb@wvbauer.com'>wvb@wvbauer.com</a> <br /></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='co'># illustrative dataset (10 beeps for 2 days for 2 subjects)</span>
-<span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/structure.html'>structure</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>subject</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>,
+<span class='va'>dat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/structure.html'>structure</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span>subject <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>,
 <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>,
-<span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>), <span class='kw'>dayno</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>,
+<span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span><span class='op'>)</span>, dayno <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>,
 <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>,
-<span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>), <span class='kw'>beep</span> <span class='kw'>=</span>
-<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1L</span>, <span class='fl'>2L</span>, <span class='fl'>3L</span>, <span class='fl'>4L</span>, <span class='fl'>5L</span>, <span class='fl'>6L</span>, <span class='fl'>7L</span>, <span class='fl'>8L</span>, <span class='fl'>9L</span>, <span class='fl'>10L</span>, <span class='fl'>11L</span>, <span class='fl'>12L</span>, <span class='fl'>13L</span>, <span class='fl'>14L</span>, <span class='fl'>15L</span>, <span class='fl'>16L</span>,
+<span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>1L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span>, <span class='fl'>2L</span><span class='op'>)</span>, beep <span class='op'>=</span>
+<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1L</span>, <span class='fl'>2L</span>, <span class='fl'>3L</span>, <span class='fl'>4L</span>, <span class='fl'>5L</span>, <span class='fl'>6L</span>, <span class='fl'>7L</span>, <span class='fl'>8L</span>, <span class='fl'>9L</span>, <span class='fl'>10L</span>, <span class='fl'>11L</span>, <span class='fl'>12L</span>, <span class='fl'>13L</span>, <span class='fl'>14L</span>, <span class='fl'>15L</span>, <span class='fl'>16L</span>,
 <span class='fl'>17L</span>, <span class='fl'>18L</span>, <span class='fl'>19L</span>, <span class='fl'>20L</span>, <span class='fl'>1L</span>, <span class='fl'>2L</span>, <span class='fl'>3L</span>, <span class='fl'>4L</span>, <span class='fl'>5L</span>, <span class='fl'>6L</span>, <span class='fl'>7L</span>, <span class='fl'>8L</span>, <span class='fl'>9L</span>, <span class='fl'>10L</span>, <span class='fl'>11L</span>, <span class='fl'>12L</span>, <span class='fl'>13L</span>,
-<span class='fl'>14L</span>, <span class='fl'>15L</span>, <span class='fl'>16L</span>, <span class='fl'>17L</span>, <span class='fl'>18L</span>, <span class='fl'>19L</span>, <span class='fl'>20L</span>), <span class='kw'>beeptime</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/structure.html'>structure</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>1571551380</span>,
+<span class='fl'>14L</span>, <span class='fl'>15L</span>, <span class='fl'>16L</span>, <span class='fl'>17L</span>, <span class='fl'>18L</span>, <span class='fl'>19L</span>, <span class='fl'>20L</span><span class='op'>)</span>, beeptime <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/structure.html'>structure</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1571551380</span>,
 <span class='fl'>1571558400</span>, <span class='fl'>1571563080</span>, <span class='fl'>1571567640</span>, <span class='fl'>1571573760</span>, <span class='fl'>1571580900</span>, <span class='fl'>1571582820</span>,
 <span class='fl'>1571590860</span>, <span class='fl'>1571595360</span>, <span class='fl'>1571599320</span>, <span class='fl'>1571640120</span>, <span class='fl'>1571643180</span>, <span class='fl'>1571650680</span>,
 <span class='fl'>1571656140</span>, <span class='fl'>1571660760</span>, <span class='fl'>1571666100</span>, <span class='fl'>1571671080</span>, <span class='fl'>1571675280</span>, <span class='fl'>1571681880</span>,
 <span class='fl'>1571688480</span>, <span class='fl'>1571812380</span>, <span class='fl'>1571815080</span>, <span class='fl'>1571823360</span>, <span class='fl'>1571828220</span>, <span class='fl'>1571832780</span>,
 <span class='fl'>1571838900</span>, <span class='fl'>1571842320</span>, <span class='fl'>1571851380</span>, <span class='fl'>1571854380</span>, <span class='fl'>1571859600</span>, <span class='fl'>1571900280</span>,
 <span class='fl'>1571903700</span>, <span class='fl'>1571910060</span>, <span class='fl'>1571915340</span>, <span class='fl'>1571922360</span>, <span class='fl'>1571925660</span>, <span class='fl'>1571931360</span>,
-<span class='fl'>1571938680</span>, <span class='fl'>1571943960</span>, <span class='fl'>1571948160</span>), <span class='kw'>class</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"POSIXct"</span>, <span class='st'>"POSIXt"</span>)),
-<span class='kw'>relaxed</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>2</span>, <span class='fl'>6</span>, <span class='fl'>6</span>, <span class='fl'>6</span>, <span class='fl'>5</span>, <span class='fl'>6</span>, <span class='fl'>6</span>, <span class='fl'>6</span>, <span class='fl'>NA</span>, <span class='fl'>5</span>, <span class='fl'>1</span>, <span class='fl'>NA</span>, <span class='fl'>6</span>, <span class='fl'>6</span>, <span class='fl'>6</span>, <span class='fl'>NA</span>, <span class='fl'>6</span>, <span class='fl'>6</span>, <span class='fl'>6</span>, <span class='fl'>4</span>,
-<span class='fl'>2</span>, <span class='fl'>7</span>, <span class='fl'>7</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>7</span>, <span class='fl'>7</span>, <span class='fl'>1</span>, <span class='fl'>7</span>, <span class='fl'>6</span>, <span class='fl'>NA</span>, <span class='fl'>7</span>, <span class='fl'>6</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>NA</span>, <span class='fl'>7</span>, <span class='fl'>4</span>, <span class='fl'>7</span>, <span class='fl'>7</span>)),
-<span class='kw'>row.names</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='fl'>NA</span>, <span class='fl'>40L</span>), <span class='kw'>class</span> <span class='kw'>=</span> <span class='st'>"data.frame"</span>)
-<span class='no'>dat</span></div><div class='output co'>#&gt;    subject dayno beep            beeptime relaxed
+<span class='fl'>1571938680</span>, <span class='fl'>1571943960</span>, <span class='fl'>1571948160</span><span class='op'>)</span>, class <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"POSIXct"</span>, <span class='st'>"POSIXt"</span><span class='op'>)</span><span class='op'>)</span>,
+relaxed <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='fl'>6</span>, <span class='fl'>6</span>, <span class='fl'>6</span>, <span class='fl'>5</span>, <span class='fl'>6</span>, <span class='fl'>6</span>, <span class='fl'>6</span>, <span class='cn'>NA</span>, <span class='fl'>5</span>, <span class='fl'>1</span>, <span class='cn'>NA</span>, <span class='fl'>6</span>, <span class='fl'>6</span>, <span class='fl'>6</span>, <span class='cn'>NA</span>, <span class='fl'>6</span>, <span class='fl'>6</span>, <span class='fl'>6</span>, <span class='fl'>4</span>,
+<span class='fl'>2</span>, <span class='fl'>7</span>, <span class='fl'>7</span>, <span class='cn'>NA</span>, <span class='cn'>NA</span>, <span class='fl'>7</span>, <span class='fl'>7</span>, <span class='fl'>1</span>, <span class='fl'>7</span>, <span class='fl'>6</span>, <span class='cn'>NA</span>, <span class='fl'>7</span>, <span class='fl'>6</span>, <span class='cn'>NA</span>, <span class='cn'>NA</span>, <span class='cn'>NA</span>, <span class='fl'>7</span>, <span class='fl'>4</span>, <span class='fl'>7</span>, <span class='fl'>7</span><span class='op'>)</span><span class='op'>)</span>,
+row.names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='cn'>NA</span>, <span class='fl'>40L</span><span class='op'>)</span>, class <span class='op'>=</span> <span class='st'>"data.frame"</span><span class='op'>)</span>
+<span class='va'>dat</span>
+</div><div class='co'>#&gt;    subject dayno beep            beeptime relaxed
 #&gt; 1        1     1    1 2019-10-20 08:03:00       2
 #&gt; 2        1     1    2 2019-10-20 10:00:00       6
 #&gt; 3        1     1    3 2019-10-20 11:18:00       6
@@ -238,8 +256,9 @@
 #&gt; 39       2     2   19 2019-10-24 21:06:00       7
 #&gt; 40       2     2   20 2019-10-24 22:16:00       7</div><div class='input'>
 <span class='co'># lag the relaxed variable</span>
-<span class='no'>dat</span>$<span class='no'>relaxed_lag</span> <span class='kw'>&lt;-</span> <span class='fu'>lagvar</span>(<span class='no'>relaxed</span>, <span class='kw'>id</span><span class='kw'>=</span><span class='no'>subject</span>, <span class='kw'>obs</span><span class='kw'>=</span><span class='no'>beep</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>)
-<span class='no'>dat</span></div><div class='output co'>#&gt;    subject dayno beep            beeptime relaxed relaxed_lag
+<span class='va'>dat</span><span class='op'>$</span><span class='va'>relaxed_lag</span> <span class='op'>&lt;-</span> <span class='fu'>lagvar</span><span class='op'>(</span><span class='va'>relaxed</span>, id<span class='op'>=</span><span class='va'>subject</span>, obs<span class='op'>=</span><span class='va'>beep</span>, data<span class='op'>=</span><span class='va'>dat</span><span class='op'>)</span>
+<span class='va'>dat</span>
+</div><div class='co'>#&gt;    subject dayno beep            beeptime relaxed relaxed_lag
 #&gt; 1        1     1    1 2019-10-20 08:03:00       2          NA
 #&gt; 2        1     1    2 2019-10-20 10:00:00       6           2
 #&gt; 3        1     1    3 2019-10-20 11:18:00       6           6
@@ -282,8 +301,9 @@
 #&gt; 40       2     2   20 2019-10-24 22:16:00       7           7</div><div class='input'>
 <span class='co'># in this example, consecutive observations from the same subject are each</span>
 <span class='co'># one lag apart, so one can leave out the 'obs' (i.e., 'beep') argument here</span>
-<span class='no'>dat</span>$<span class='no'>relaxed_lag</span> <span class='kw'>&lt;-</span> <span class='fu'>lagvar</span>(<span class='no'>relaxed</span>, <span class='kw'>id</span><span class='kw'>=</span><span class='no'>subject</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>)
-<span class='no'>dat</span></div><div class='output co'>#&gt;    subject dayno beep            beeptime relaxed relaxed_lag
+<span class='va'>dat</span><span class='op'>$</span><span class='va'>relaxed_lag</span> <span class='op'>&lt;-</span> <span class='fu'>lagvar</span><span class='op'>(</span><span class='va'>relaxed</span>, id<span class='op'>=</span><span class='va'>subject</span>, data<span class='op'>=</span><span class='va'>dat</span><span class='op'>)</span>
+<span class='va'>dat</span>
+</div><div class='co'>#&gt;    subject dayno beep            beeptime relaxed relaxed_lag
 #&gt; 1        1     1    1 2019-10-20 08:03:00       2          NA
 #&gt; 2        1     1    2 2019-10-20 10:00:00       6           2
 #&gt; 3        1     1    3 2019-10-20 11:18:00       6           6
@@ -327,8 +347,9 @@
 <span class='co'># but this also allows lagged values across days (e.g., the value '5' from</span>
 <span class='co'># beep 10 on day 1 becomes the lagged value for beep 11 on day 2); this can</span>
 <span class='co'># be avoided by specifying the day variable</span>
-<span class='no'>dat</span>$<span class='no'>relaxed_lag</span> <span class='kw'>&lt;-</span> <span class='fu'>lagvar</span>(<span class='no'>relaxed</span>, <span class='kw'>id</span><span class='kw'>=</span><span class='no'>subject</span>, <span class='kw'>obs</span><span class='kw'>=</span><span class='no'>beep</span>, <span class='kw'>day</span><span class='kw'>=</span><span class='no'>dayno</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>)
-<span class='no'>dat</span></div><div class='output co'>#&gt;    subject dayno beep            beeptime relaxed relaxed_lag
+<span class='va'>dat</span><span class='op'>$</span><span class='va'>relaxed_lag</span> <span class='op'>&lt;-</span> <span class='fu'>lagvar</span><span class='op'>(</span><span class='va'>relaxed</span>, id<span class='op'>=</span><span class='va'>subject</span>, obs<span class='op'>=</span><span class='va'>beep</span>, day<span class='op'>=</span><span class='va'>dayno</span>, data<span class='op'>=</span><span class='va'>dat</span><span class='op'>)</span>
+<span class='va'>dat</span>
+</div><div class='co'>#&gt;    subject dayno beep            beeptime relaxed relaxed_lag
 #&gt; 1        1     1    1 2019-10-20 08:03:00       2          NA
 #&gt; 2        1     1    2 2019-10-20 10:00:00       6           2
 #&gt; 3        1     1    3 2019-10-20 11:18:00       6           6
@@ -370,8 +391,9 @@
 #&gt; 39       2     2   19 2019-10-24 21:06:00       7           4
 #&gt; 40       2     2   20 2019-10-24 22:16:00       7           7</div><div class='input'>
 <span class='co'># lag the variable by two observations</span>
-<span class='no'>dat</span>$<span class='no'>relaxed_lag</span> <span class='kw'>&lt;-</span> <span class='fu'>lagvar</span>(<span class='no'>relaxed</span>, <span class='kw'>id</span><span class='kw'>=</span><span class='no'>subject</span>, <span class='kw'>obs</span><span class='kw'>=</span><span class='no'>beep</span>, <span class='kw'>day</span><span class='kw'>=</span><span class='no'>dayno</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>lag</span><span class='kw'>=</span><span class='fl'>2</span>)
-<span class='no'>dat</span></div><div class='output co'>#&gt;    subject dayno beep            beeptime relaxed relaxed_lag
+<span class='va'>dat</span><span class='op'>$</span><span class='va'>relaxed_lag</span> <span class='op'>&lt;-</span> <span class='fu'>lagvar</span><span class='op'>(</span><span class='va'>relaxed</span>, id<span class='op'>=</span><span class='va'>subject</span>, obs<span class='op'>=</span><span class='va'>beep</span>, day<span class='op'>=</span><span class='va'>dayno</span>, data<span class='op'>=</span><span class='va'>dat</span>, lag<span class='op'>=</span><span class='fl'>2</span><span class='op'>)</span>
+<span class='va'>dat</span>
+</div><div class='co'>#&gt;    subject dayno beep            beeptime relaxed relaxed_lag
 #&gt; 1        1     1    1 2019-10-20 08:03:00       2          NA
 #&gt; 2        1     1    2 2019-10-20 10:00:00       6          NA
 #&gt; 3        1     1    3 2019-10-20 11:18:00       6           2
@@ -414,10 +436,11 @@
 #&gt; 40       2     2   20 2019-10-24 22:16:00       7           4</div><div class='input'>
 <span class='co'># lag the variable by up to 5 observations (taking whatever lag is smallest)</span>
 <span class='co'># note: this creates two variables (xl and lag), which we can add back to the dataset</span>
-<span class='no'>tmp</span> <span class='kw'>&lt;-</span> <span class='fu'>lagvar</span>(<span class='no'>relaxed</span>, <span class='kw'>id</span><span class='kw'>=</span><span class='no'>subject</span>, <span class='kw'>obs</span><span class='kw'>=</span><span class='no'>beep</span>, <span class='kw'>day</span><span class='kw'>=</span><span class='no'>dayno</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>, <span class='kw'>lag</span><span class='kw'>=</span><span class='fl'>1</span>:<span class='fl'>5</span>)
-<span class='no'>dat</span>$<span class='no'>relaxed_lag</span> <span class='kw'>&lt;-</span> <span class='no'>tmp</span>$<span class='no'>xl</span>
-<span class='no'>dat</span>$<span class='no'>lag</span> <span class='kw'>&lt;-</span> <span class='no'>tmp</span>$<span class='no'>lag</span>
-<span class='no'>dat</span></div><div class='output co'>#&gt;    subject dayno beep            beeptime relaxed relaxed_lag lag
+<span class='va'>tmp</span> <span class='op'>&lt;-</span> <span class='fu'>lagvar</span><span class='op'>(</span><span class='va'>relaxed</span>, id<span class='op'>=</span><span class='va'>subject</span>, obs<span class='op'>=</span><span class='va'>beep</span>, day<span class='op'>=</span><span class='va'>dayno</span>, data<span class='op'>=</span><span class='va'>dat</span>, lag<span class='op'>=</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>)</span>
+<span class='va'>dat</span><span class='op'>$</span><span class='va'>relaxed_lag</span> <span class='op'>&lt;-</span> <span class='va'>tmp</span><span class='op'>$</span><span class='va'>xl</span>
+<span class='va'>dat</span><span class='op'>$</span><span class='va'>lag</span> <span class='op'>&lt;-</span> <span class='va'>tmp</span><span class='op'>$</span><span class='va'>lag</span>
+<span class='va'>dat</span>
+</div><div class='co'>#&gt;    subject dayno beep            beeptime relaxed relaxed_lag lag
 #&gt; 1        1     1    1 2019-10-20 08:03:00       2          NA  NA
 #&gt; 2        1     1    2 2019-10-20 10:00:00       6           2   1
 #&gt; 3        1     1    3 2019-10-20 11:18:00       6           6   1
@@ -459,9 +482,10 @@
 #&gt; 39       2     2   19 2019-10-24 21:06:00       7           4   1
 #&gt; 40       2     2   20 2019-10-24 22:16:00       7           7   1</div><div class='input'>
 <span class='co'># remove those new variables</span>
-<span class='no'>dat</span>$<span class='no'>relaxed_lag</span> <span class='kw'>&lt;-</span> <span class='kw'>NULL</span>
-<span class='no'>dat</span>$<span class='no'>lag</span> <span class='kw'>&lt;-</span> <span class='kw'>NULL</span>
-<span class='no'>dat</span></div><div class='output co'>#&gt;    subject dayno beep            beeptime relaxed
+<span class='va'>dat</span><span class='op'>$</span><span class='va'>relaxed_lag</span> <span class='op'>&lt;-</span> <span class='cn'>NULL</span>
+<span class='va'>dat</span><span class='op'>$</span><span class='va'>lag</span> <span class='op'>&lt;-</span> <span class='cn'>NULL</span>
+<span class='va'>dat</span>
+</div><div class='co'>#&gt;    subject dayno beep            beeptime relaxed
 #&gt; 1        1     1    1 2019-10-20 08:03:00       2
 #&gt; 2        1     1    2 2019-10-20 10:00:00       6
 #&gt; 3        1     1    3 2019-10-20 11:18:00       6
@@ -502,11 +526,12 @@
 #&gt; 38       2     2   18 2019-10-24 19:38:00       4
 #&gt; 39       2     2   19 2019-10-24 21:06:00       7
 #&gt; 40       2     2   20 2019-10-24 22:16:00       7</div><div class='input'>
-<span class='co'># lag the relaxed variable and also get time difference</span>
-<span class='no'>tmp</span> <span class='kw'>&lt;-</span> <span class='fu'>lagvar</span>(<span class='no'>relaxed</span>, <span class='kw'>id</span><span class='kw'>=</span><span class='no'>subject</span>, <span class='kw'>obs</span><span class='kw'>=</span><span class='no'>beep</span>, <span class='kw'>day</span><span class='kw'>=</span><span class='no'>dayno</span>, <span class='kw'>time</span><span class='kw'>=</span><span class='no'>beeptime</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>)
-<span class='no'>dat</span>$<span class='no'>relaxed_lag</span> <span class='kw'>&lt;-</span> <span class='no'>tmp</span>$<span class='no'>xl</span>
-<span class='no'>dat</span>$<span class='no'>timelag</span> <span class='kw'>&lt;-</span> <span class='no'>tmp</span>$<span class='no'>timelag</span>
-<span class='no'>dat</span></div><div class='output co'>#&gt;    subject dayno beep            beeptime relaxed relaxed_lag   timelag
+<span class='co'># lag the relaxed variable and also get the time difference</span>
+<span class='va'>tmp</span> <span class='op'>&lt;-</span> <span class='fu'>lagvar</span><span class='op'>(</span><span class='va'>relaxed</span>, id<span class='op'>=</span><span class='va'>subject</span>, obs<span class='op'>=</span><span class='va'>beep</span>, day<span class='op'>=</span><span class='va'>dayno</span>, time<span class='op'>=</span><span class='va'>beeptime</span>, data<span class='op'>=</span><span class='va'>dat</span><span class='op'>)</span>
+<span class='va'>dat</span><span class='op'>$</span><span class='va'>relaxed_lag</span> <span class='op'>&lt;-</span> <span class='va'>tmp</span><span class='op'>$</span><span class='va'>xl</span>
+<span class='va'>dat</span><span class='op'>$</span><span class='va'>timelag</span> <span class='op'>&lt;-</span> <span class='va'>tmp</span><span class='op'>$</span><span class='va'>timelag</span>
+<span class='va'>dat</span>
+</div><div class='co'>#&gt;    subject dayno beep            beeptime relaxed relaxed_lag   timelag
 #&gt; 1        1     1    1 2019-10-20 08:03:00       2          NA   NA secs
 #&gt; 2        1     1    2 2019-10-20 10:00:00       6           2 7020 secs
 #&gt; 3        1     1    3 2019-10-20 11:18:00       6           6 4680 secs
@@ -548,8 +573,9 @@
 #&gt; 39       2     2   19 2019-10-24 21:06:00       7           4 5280 secs
 #&gt; 40       2     2   20 2019-10-24 22:16:00       7           7 4200 secs</div><div class='input'>
 <span class='co'># timelag in minutes</span>
-<span class='no'>dat</span>$<span class='no'>timelag</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='no'>tmp</span>$<span class='no'>timelag</span>, <span class='kw'>units</span><span class='kw'>=</span><span class='st'>"mins"</span>)
-<span class='no'>dat</span></div><div class='output co'>#&gt;    subject dayno beep            beeptime relaxed relaxed_lag timelag
+<span class='va'>dat</span><span class='op'>$</span><span class='va'>timelag</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='va'>tmp</span><span class='op'>$</span><span class='va'>timelag</span>, units<span class='op'>=</span><span class='st'>"mins"</span><span class='op'>)</span>
+<span class='va'>dat</span>
+</div><div class='co'>#&gt;    subject dayno beep            beeptime relaxed relaxed_lag timelag
 #&gt; 1        1     1    1 2019-10-20 08:03:00       2          NA      NA
 #&gt; 2        1     1    2 2019-10-20 10:00:00       6           2     117
 #&gt; 3        1     1    3 2019-10-20 11:18:00       6           6      78
@@ -591,9 +617,10 @@
 #&gt; 39       2     2   19 2019-10-24 21:06:00       7           4      88
 #&gt; 40       2     2   20 2019-10-24 22:16:00       7           7      70</div><div class='input'>
 <span class='co'># remove those new variables</span>
-<span class='no'>dat</span>$<span class='no'>relaxed_lag</span> <span class='kw'>&lt;-</span> <span class='kw'>NULL</span>
-<span class='no'>dat</span>$<span class='no'>timelag</span> <span class='kw'>&lt;-</span> <span class='kw'>NULL</span>
-<span class='no'>dat</span></div><div class='output co'>#&gt;    subject dayno beep            beeptime relaxed
+<span class='va'>dat</span><span class='op'>$</span><span class='va'>relaxed_lag</span> <span class='op'>&lt;-</span> <span class='cn'>NULL</span>
+<span class='va'>dat</span><span class='op'>$</span><span class='va'>timelag</span> <span class='op'>&lt;-</span> <span class='cn'>NULL</span>
+<span class='va'>dat</span>
+</div><div class='co'>#&gt;    subject dayno beep            beeptime relaxed
 #&gt; 1        1     1    1 2019-10-20 08:03:00       2
 #&gt; 2        1     1    2 2019-10-20 10:00:00       6
 #&gt; 3        1     1    3 2019-10-20 11:18:00       6
@@ -635,8 +662,9 @@
 #&gt; 39       2     2   19 2019-10-24 21:06:00       7
 #&gt; 40       2     2   20 2019-10-24 22:16:00       7</div><div class='input'>
 <span class='co'># suppose the 'dayno' variable is not available</span>
-<span class='no'>dat</span>$<span class='no'>dayno</span> <span class='kw'>&lt;-</span> <span class='kw'>NULL</span>
-<span class='no'>dat</span></div><div class='output co'>#&gt;    subject beep            beeptime relaxed
+<span class='va'>dat</span><span class='op'>$</span><span class='va'>dayno</span> <span class='op'>&lt;-</span> <span class='cn'>NULL</span>
+<span class='va'>dat</span>
+</div><div class='co'>#&gt;    subject beep            beeptime relaxed
 #&gt; 1        1    1 2019-10-20 08:03:00       2
 #&gt; 2        1    2 2019-10-20 10:00:00       6
 #&gt; 3        1    3 2019-10-20 11:18:00       6
@@ -678,12 +706,13 @@
 #&gt; 39       2   19 2019-10-24 21:06:00       7
 #&gt; 40       2   20 2019-10-24 22:16:00       7</div><div class='input'>
 <span class='co'># we can recreate this based on the 'beeptime' variable</span>
-<span class='no'>dat</span>$<span class='no'>dayno</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/split.html'>unsplit</a></span>(
-   <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/split.html'>split</a></span>(<span class='no'>dat</span>$<span class='no'>beeptime</span>, <span class='no'>dat</span>$<span class='no'>subject</span>), <span class='kw'>function</span>(<span class='no'>x</span>) {
-      <span class='no'>z</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/format.html'>format</a></span>(<span class='no'>x</span>, <span class='kw'>format</span><span class='kw'>=</span><span class='st'>"%Y-%m-%d"</span>)
-      <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/difftime.html'>difftime</a></span>(<span class='no'>z</span>, <span class='no'>z</span>[<span class='fl'>1</span>], <span class='kw'>units</span><span class='kw'>=</span><span class='st'>"days"</span>)) + <span class='fl'>1</span>
-   }), <span class='no'>dat</span>$<span class='no'>subject</span>)
-<span class='no'>dat</span></div><div class='output co'>#&gt;    subject beep            beeptime relaxed dayno
+<span class='va'>dat</span><span class='op'>$</span><span class='va'>dayno</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/split.html'>unsplit</a></span><span class='op'>(</span>
+   <span class='fu'><a href='https://rdrr.io/r/base/lapply.html'>lapply</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/split.html'>split</a></span><span class='op'>(</span><span class='va'>dat</span><span class='op'>$</span><span class='va'>beeptime</span>, <span class='va'>dat</span><span class='op'>$</span><span class='va'>subject</span><span class='op'>)</span>, <span class='kw'>function</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span> <span class='op'>{</span>
+      <span class='va'>z</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/format.html'>format</a></span><span class='op'>(</span><span class='va'>x</span>, format<span class='op'>=</span><span class='st'>"%Y-%m-%d"</span><span class='op'>)</span>
+      <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/difftime.html'>difftime</a></span><span class='op'>(</span><span class='va'>z</span>, <span class='va'>z</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span>, units<span class='op'>=</span><span class='st'>"days"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span> <span class='fl'>1</span>
+   <span class='op'>}</span><span class='op'>)</span>, <span class='va'>dat</span><span class='op'>$</span><span class='va'>subject</span><span class='op'>)</span>
+<span class='va'>dat</span>
+</div><div class='co'>#&gt;    subject beep            beeptime relaxed dayno
 #&gt; 1        1    1 2019-10-20 08:03:00       2     1
 #&gt; 2        1    2 2019-10-20 10:00:00       6     1
 #&gt; 3        1    3 2019-10-20 11:18:00       6     1
@@ -725,8 +754,9 @@
 #&gt; 39       2   19 2019-10-24 21:06:00       7     2
 #&gt; 40       2   20 2019-10-24 22:16:00       7     2</div><div class='input'>
 <span class='co'># now suppose the dataset does not include beeps that were not responded to</span>
-<span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='no'>dat</span>[!<span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span>(<span class='no'>dat</span>$<span class='no'>relaxed</span>),]
-<span class='no'>dat</span></div><div class='output co'>#&gt;    subject beep            beeptime relaxed dayno
+<span class='va'>dat</span> <span class='op'>&lt;-</span> <span class='va'>dat</span><span class='op'>[</span><span class='op'>!</span><span class='fu'><a href='https://rdrr.io/r/base/NA.html'>is.na</a></span><span class='op'>(</span><span class='va'>dat</span><span class='op'>$</span><span class='va'>relaxed</span><span class='op'>)</span>,<span class='op'>]</span>
+<span class='va'>dat</span>
+</div><div class='co'>#&gt;    subject beep            beeptime relaxed dayno
 #&gt; 1        1    1 2019-10-20 08:03:00       2     1
 #&gt; 2        1    2 2019-10-20 10:00:00       6     1
 #&gt; 3        1    3 2019-10-20 11:18:00       6     1
@@ -760,8 +790,9 @@
 #&gt; 40       2   20 2019-10-24 22:16:00       7     2</div><div class='input'>
 <span class='co'># in this case, specifying the 'obs' variable (i.e., 'beep') is crucial</span>
 <span class='co'># note: the lagged value for beep 10 is missing, since beep 9 is missing</span>
-<span class='no'>dat</span>$<span class='no'>relaxed_lag</span> <span class='kw'>&lt;-</span> <span class='fu'>lagvar</span>(<span class='no'>relaxed</span>, <span class='kw'>id</span><span class='kw'>=</span><span class='no'>subject</span>, <span class='kw'>obs</span><span class='kw'>=</span><span class='no'>beep</span>, <span class='kw'>day</span><span class='kw'>=</span><span class='no'>dayno</span>, <span class='kw'>data</span><span class='kw'>=</span><span class='no'>dat</span>)
-<span class='no'>dat</span></div><div class='output co'>#&gt;    subject beep            beeptime relaxed dayno relaxed_lag
+<span class='va'>dat</span><span class='op'>$</span><span class='va'>relaxed_lag</span> <span class='op'>&lt;-</span> <span class='fu'>lagvar</span><span class='op'>(</span><span class='va'>relaxed</span>, id<span class='op'>=</span><span class='va'>subject</span>, obs<span class='op'>=</span><span class='va'>beep</span>, day<span class='op'>=</span><span class='va'>dayno</span>, data<span class='op'>=</span><span class='va'>dat</span><span class='op'>)</span>
+<span class='va'>dat</span>
+</div><div class='co'>#&gt;    subject beep            beeptime relaxed dayno relaxed_lag
 #&gt; 1        1    1 2019-10-20 08:03:00       2     1          NA
 #&gt; 2        1    2 2019-10-20 10:00:00       6     1           2
 #&gt; 3        1    3 2019-10-20 11:18:00       6     1           6
@@ -794,28 +825,21 @@
 #&gt; 39       2   19 2019-10-24 21:06:00       7     2           4
 #&gt; 40       2   20 2019-10-24 22:16:00       7     2           7</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#details">Details</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
-    <h2>Author</h2>
-    <p>Wolfgang Viechtbauer <a href='mailto:wvb@wvbauer.com'>wvb@wvbauer.com</a> <br /></p>
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
 
       <footer>
       <div class="copyright">
-  <p>Developed by Wolfgang Viechtbauer, Mihail Constantin.</p>
+  <p><p>Developed by Wolfgang Viechtbauer, Mihail Constantin.</p></p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.6.1.9001.</p></p>
 </div>
 
       </footer>
@@ -823,6 +847,8 @@
 
   
 
+
+  
 
   </body>
 </html>

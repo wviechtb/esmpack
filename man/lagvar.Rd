@@ -6,11 +6,11 @@
 lagvar(x, id, obs, day, time, data, lag=1)
 }
 \arguments{
-   \item{x}{vector to specify the variable to be lagged.}
-   \item{id}{optional vector to specify a subject id variable.}
-   \item{obs}{optional numeric vector that indicates the observation number of the values specified via the \code{x} argument.}
-   \item{day}{optional vector to specify a day number variable.}
-   \item{time}{optional vector to specify a variable that indicates the actual date and time of the observations.}
+   \item{x}{argument to specify the variable to be lagged.}
+   \item{id}{optional argument to specify a subject id variable.}
+   \item{obs}{optional argument that indicates the observation number of the values specified via the \code{x} argument.}
+   \item{day}{optional argument to specify a day number variable.}
+   \item{time}{optional argument to specify a variable that indicates the actual date and time of the observations.}
    \item{data}{optional data frame that contains the variables specified above.}
    \item{lag}{scalar specifying the lag (default is \code{1}). Can also be a vector with multiple lag values that are permitted. See \sQuote{Details}.}
 }
@@ -92,7 +92,7 @@ dat$relaxed_lag <- NULL
 dat$lag <- NULL
 dat
 
-# lag the relaxed variable and also get time difference
+# lag the relaxed variable and also get the time difference
 tmp <- lagvar(relaxed, id=subject, obs=beep, day=dayno, time=beeptime, data=dat)
 dat$relaxed_lag <- tmp$xl
 dat$timelag <- tmp$timelag
