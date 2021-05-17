@@ -1,13 +1,23 @@
 template:
+  package: preferably
   params:
-    bootswatch: cosmo
+    toggle: manual
+  #params:
+  #  bootswatch: cosmo
+  opengraph:
+    #image:
+    #  src: man/figures/card.png
+    #  alt: "Alternative text describing the image"
+    twitter:
+      creator: "@wviechtb"
+      card: summary_large_image
 
 home:
   links:
   - text: GitHub Repo
     href: https://github.com/wviechtb/esmpack
   - text: Author Website(s)
-    href: http://www.wvbauer.com/
+    href: https://www.wvbauer.com/
 
 figures:
   dev: grDevices::png
