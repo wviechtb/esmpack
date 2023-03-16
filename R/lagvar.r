@@ -109,7 +109,7 @@ lagvar <- function(x, id, obs, day, time, data, lag=1) {
 
          for (j in 1:m) {
 
-            if (sub$obs[i] - lag[j] <= 0)
+            if (sub$obs[i] - lag[j] < 0)
                break
 
             pos <- which(sub$obs == sub$obs[i]-lag[j])

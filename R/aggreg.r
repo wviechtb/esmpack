@@ -87,7 +87,7 @@ aggreg <- function(data, id, vars, grep=FALSE, na.rm=TRUE) {
       FUN = function(x, rm.na=na.rm) {
          if (inherits(x, c("numeric","integer","logical"))) {
             mean(x, na.rm=rm.na)
-         } else if (class(x) == "factor") {
+         } else if (inherits(x, "factor")) {
             if (rm.na) droplevels(na.omit(x)[1]) else droplevels(x[1])
          } else {
             if (rm.na) na.omit(x)[1] else x[1]

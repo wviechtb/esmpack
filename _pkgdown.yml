@@ -1,5 +1,6 @@
 template:
-  package: preferably
+  #package: preferably
+  #bootstrap: 5
   params:
     toggle: manual
   #params:

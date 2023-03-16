@@ -3,7 +3,7 @@ esmpack: A Package to Facilitate Preparation and Management of ESM/EMA Data
 
 [![R build status](https://github.com/wviechtb/esmpack/workflows/R-CMD-check/badge.svg)](https://github.com/wviechtb/esmpack/actions)
 ![CRAN Version](https://www.r-pkg.org/badges/version/esmpack)
-![devel Version](https://img.shields.io/badge/devel-0.1--17-brightgreen.svg)
+![devel Version](https://img.shields.io/badge/devel-0.1--18-brightgreen.svg)
 
 ## Description
 
