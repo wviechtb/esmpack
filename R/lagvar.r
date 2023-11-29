@@ -96,6 +96,8 @@ lagvar <- function(x, id, obs, day, time, data, lag=1) {
 
    res <- lapply(split(dat, dat$id), function(sub) {
 
+      #print(sub)
+
       n <- nrow(sub)
       xl <- rep(NA, n)
       ll <- rep(NA, n)

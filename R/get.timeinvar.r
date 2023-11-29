@@ -45,7 +45,8 @@ get.timeinvar <- function(x, id, data, na.rm=TRUE) {
    firstnotna <- function(x)
       c(na.omit(x)[1])
 
-   x <- tapply(x, id, firstnotna)
+   #x <- tapply(x, id, firstnotna) # this drops factors (if x is a factor)
+   x <- sapply(split(x, id), firstnotna)
 
    if (na.rm)
       x <- x[!is.na(x)]

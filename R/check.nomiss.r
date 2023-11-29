@@ -60,7 +60,7 @@ check.nomiss <- function(x, id, data, out=1) {
 
    # get subject ids
 
-   ids <- unname(tapply(id, id, function(x) x[1]))
+   ids <- unname(tapply(id, id, "[", 1))
 
    #########################################################################
 

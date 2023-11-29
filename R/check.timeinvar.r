@@ -72,7 +72,7 @@ check.timeinvar <- function(x, id, data, out=1, na.rm=TRUE) {
 
    # get subject ids
 
-   ids <- unname(tapply(id, id, function(x) x[1]))
+   ids <- unname(tapply(id, id, "[", 1))
 
    #########################################################################
 

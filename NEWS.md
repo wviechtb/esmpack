@@ -1,4 +1,6 @@
-# esmpack 0.1-18 (2023-03-16)
+# esmpack 0.1-19 (2023-11-29)
+
+- added `calc.fun()` for computing arbitrary summary statistics for each subject
 
 - in `lagvar()`, added `time` argument (that allows for computing the time difference between lagged observations) and made the examples for this function more complete
 
