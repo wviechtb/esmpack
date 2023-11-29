@@ -1,5 +1,7 @@
+url: https://wviechtb.github.io/esmpack/
+
 template:
-  #package: preferably
+  package: preferably
   #bootstrap: 5
   params:
     toggle: manual
@@ -12,23 +14,30 @@ template:
     twitter:
       creator: "@wviechtb"
       card: summary_large_image
+    # this doesn't work :(
+    #mastodon:
+    #  creator: "@wviechtb@scholar.social"
+    #  card: summary_large_image
+
+code:
+  width: 102
 
 home:
   links:
   - text: GitHub Repo
     href: https://github.com/wviechtb/esmpack
-  - text: Author Website(s)
-    href: https://www.wvbauer.com/
+  - text: Author Website
+    href: https://www.wvbauer.com
 
 figures:
   dev: grDevices::png
   dpi: 96
   dev.args: []
   fig.ext: png
-  fig.width: 8
-  fig.height: ~
+  fig.width: 9
+  fig.height: 8
   fig.retina: 2
-  fig.asp: 0.8
+  fig.asp: 1
 
 navbar:
   title: "esmpack"
@@ -42,7 +51,14 @@ navbar:
     - text: "Changelog"
       href: news/index.html
   right:
-   - icon: fa-twitter
-     href: https://twitter.com/wviechtb
-   - icon: fa-github
+   #- icon: fa-twitter
+   #  href: https://twitter.com/wviechtb
+   # this doesn't work :( so using text links for now
+   #- icon: fa-mastodon
+   #  href: https://scholar.social/@wviechtb
+   - text: Mastodon
+     href: https://scholar.social/@wviechtb
+   #- icon: fa-github
+   #  href: https://github.com/wviechtb/esmpack
+   - text: GitHub
      href: https://github.com/wviechtb/esmpack

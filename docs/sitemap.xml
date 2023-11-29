@@ -1,69 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>/404.html</loc>
+    <loc>https://wviechtb.github.io/esmpack/404.html</loc>
   </url>
   <url>
-    <loc>/authors.html</loc>
+    <loc>https://wviechtb.github.io/esmpack/authors.html</loc>
   </url>
   <url>
-    <loc>/index.html</loc>
+    <loc>https://wviechtb.github.io/esmpack/index.html</loc>
   </url>
   <url>
-    <loc>/news/index.html</loc>
+    <loc>https://wviechtb.github.io/esmpack/news/index.html</loc>
   </url>
   <url>
-    <loc>/reference/aggreg.html</loc>
+    <loc>https://wviechtb.github.io/esmpack/reference/aggreg.html</loc>
   </url>
   <url>
-    <loc>/reference/calc.fun.html</loc>
+    <loc>https://wviechtb.github.io/esmpack/reference/calc.fun.html</loc>
   </url>
   <url>
-    <loc>/reference/calc.mcent.html</loc>
+    <loc>https://wviechtb.github.io/esmpack/reference/calc.mcent.html</loc>
   </url>
   <url>
-    <loc>/reference/calc.mean.html</loc>
+    <loc>https://wviechtb.github.io/esmpack/reference/calc.mean.html</loc>
   </url>
   <url>
-    <loc>/reference/calc.nomiss.html</loc>
+    <loc>https://wviechtb.github.io/esmpack/reference/calc.nomiss.html</loc>
   </url>
   <url>
-    <loc>/reference/check.nodup.html</loc>
+    <loc>https://wviechtb.github.io/esmpack/reference/calc.zcent.html</loc>
   </url>
   <url>
-    <loc>/reference/check.nomiss.html</loc>
+    <loc>https://wviechtb.github.io/esmpack/reference/check.nodup.html</loc>
   </url>
   <url>
-    <loc>/reference/check.timeinvar.html</loc>
+    <loc>https://wviechtb.github.io/esmpack/reference/check.nomiss.html</loc>
   </url>
   <url>
-    <loc>/reference/combitems.html</loc>
+    <loc>https://wviechtb.github.io/esmpack/reference/check.timeinvar.html</loc>
   </url>
   <url>
-    <loc>/reference/esmpack-package.html</loc>
+    <loc>https://wviechtb.github.io/esmpack/reference/combitems.html</loc>
   </url>
   <url>
-    <loc>/reference/get.beep.number.html</loc>
+    <loc>https://wviechtb.github.io/esmpack/reference/esmpack-package.html</loc>
   </url>
   <url>
-    <loc>/reference/get.day.number.html</loc>
+    <loc>https://wviechtb.github.io/esmpack/reference/get.beep.number.html</loc>
   </url>
   <url>
-    <loc>/reference/get.timeinvar.html</loc>
+    <loc>https://wviechtb.github.io/esmpack/reference/get.day.number.html</loc>
   </url>
   <url>
-    <loc>/reference/index.html</loc>
+    <loc>https://wviechtb.github.io/esmpack/reference/get.timeinvar.html</loc>
   </url>
   <url>
-    <loc>/reference/lagvar.html</loc>
+    <loc>https://wviechtb.github.io/esmpack/reference/index.html</loc>
   </url>
   <url>
-    <loc>/reference/mvvar.html</loc>
+    <loc>https://wviechtb.github.io/esmpack/reference/lagvar.html</loc>
   </url>
   <url>
-    <loc>/reference/nsub.html</loc>
+    <loc>https://wviechtb.github.io/esmpack/reference/mvvar.html</loc>
   </url>
   <url>
-    <loc>/reference/rename.html</loc>
+    <loc>https://wviechtb.github.io/esmpack/reference/nsub.html</loc>
+  </url>
+  <url>
+    <loc>https://wviechtb.github.io/esmpack/reference/rename.html</loc>
   </url>
 </urlset>

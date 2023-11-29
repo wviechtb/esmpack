@@ -1,4 +1,6 @@
-# esmpack 0.1-19 (2023-11-29)
+# esmpack 0.1-20 (2023-11-29)
+
+- added `calc.zcent()` for computing the standardized values of a variable for each subject
 
 - added `calc.fun()` for computing arbitrary summary statistics for each subject
 

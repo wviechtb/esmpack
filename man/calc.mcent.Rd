@@ -12,7 +12,7 @@ calc.mcent(x, id, data, na.rm=TRUE)
    \item{na.rm}{logical indicating whether missing values should be removed before computing the means (default is \code{TRUE}).}
 }
 \details{
-   The function computes the mean-centered values of a particular variable for each subject.
+   The function computes the mean-centered values of a particular variable for each subject, also known as \sQuote{within-person mean centering}.
 }
 \value{
    A vector.
