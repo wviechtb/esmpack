@@ -1,4 +1,4 @@
-# esmpack 0.1-20 (2023-11-29)
+# esmpack 0.1-21 (2025-03-14)
 
 - added `calc.zcent()` for computing the standardized values of a variable for each subject
 
